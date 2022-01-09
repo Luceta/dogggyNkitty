@@ -8,7 +8,7 @@ const SIZES = {
     --button-padding: 7px 0px;
     --button-font-size: 12px;
     --button-font-weight: 400;
-    --button-line-height: 15px;
+    --button-line-height: 14px;
   `,
   md: css`
     --button-width: 120px;
@@ -72,13 +72,8 @@ const StyledButton = styled.button`
   color: var(--button-color, #ffffff);
   background: var(--button-bg-color, #937456);
 
-  &:hover,
-  &:focus {
-    background: var(--button-hover-bg-color, #dfe0df);
-    color: red;
-  }
   &:active {
-    color: red;
+    color: #ffff;
     background: var(--button-hover-bg-color, #dfe0df);
   }
   &:disabled {
