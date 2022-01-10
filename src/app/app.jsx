@@ -2,7 +2,8 @@ import React from "react";
 import Button from "../components/shared/Button";
 import Alert from "../components/shared/Alert";
 import Tab from "../components/shared/Tab";
-import HeaderBasic from "../components/shared/Header";
+import HeaderBasic from "../components/shared/HeaderBasic";
+import TopSearchNav from "../components/TopSearchNav";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <h1>modal</h1>
       <h2>top-nav</h2>
       <HeaderBasic leftLogo rightLogo />
-
+      <TopSearchNav leftLogo />
       <h2>tab-menu-footer</h2>
       <Tab />
       <h2>Alert modal</h2>
