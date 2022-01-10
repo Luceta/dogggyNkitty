@@ -1,11 +1,15 @@
 import React from "react";
 import Button from "../components/shared/Button";
 import Alert from "../components/shared/Alert";
+import Tab from "../components/shared/Tab";
 
 function App() {
   return (
     <>
-      <h1>Alert modal</h1>
+      <h1>modal</h1>
+      <h2>tab-menu-footer</h2>
+      <Tab>tab</Tab>
+      <h2>Alert modal</h2>
       <Alert title="상품을 삭제할까요?" actionContent="삭제">
         modal
       </Alert>
