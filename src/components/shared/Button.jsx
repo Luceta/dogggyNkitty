@@ -63,7 +63,7 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   width: var(--button-width, 1rem);
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Spoqa Han Sans";
   font-size: var(--button-font-size, 1rem);
   font-weight: var(--button-font-weight, 500);
   line-height: var(--button-line-height, 18px);
