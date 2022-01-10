@@ -3,6 +3,7 @@ import styled from "styled-components";
 export default styled.input`
   width: 80%;
   margin-right: 19px;
+  padding: 7px 0 7px 16px;
   background: #f2f2f2;
   font-size: 14px;
   font-weight: 400;
@@ -11,7 +12,6 @@ export default styled.input`
   border: 1px solid #ededed;
 
   &::placeholder {
-    padding-left: 16px;
     color: #c4c4c4;
   }
 

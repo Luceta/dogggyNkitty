@@ -1,17 +1,18 @@
 import React from "react";
 import HeaderBox from "./shared/HeaderBox";
-import SearchInput from "./shared/SearchInput";
+import Button from "./shared/Button";
 
-function TopSearchNav(props) {
+function TopUploadNav(props) {
   return (
     <HeaderBox>
       <div>
         <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
       </div>
-
-      <SearchInput placeholder="계정 검색" />
+      <Button size="md" color="mainLight">
+        저장
+      </Button>
     </HeaderBox>
   );
 }
 
-export default TopSearchNav;
+export default TopUploadNav;
