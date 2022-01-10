@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Alert modal</h1>
-      <Alert>modal</Alert>
+      <Alert title="상품을 삭제할까요?">modal</Alert>
       <h2>button</h2>
       <Button size="sm">기본</Button>
       <Button size="md">테스트 2</Button>
