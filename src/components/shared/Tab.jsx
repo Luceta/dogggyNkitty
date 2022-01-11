@@ -45,17 +45,24 @@ const TabNavList = styled.ul`
   justify-content: space-between;
   list-style: none;
 
+  .nav_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 84px;
+  }
+
   .nav_link > img {
     display: block;
-    width: 48px;
-    height: 48px;
+    width: 24px;
+    height: 24px;
   }
 
   .nav_link > span {
     display: block;
     font-size: 10px;
     text-align: center;
-    padding: 6px 0%;
+    padding: 6px 0;
   }
 `;
 

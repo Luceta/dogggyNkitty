@@ -1,0 +1,17 @@
+import React from "react";
+import HeaderBox from "./shared/HeaderBox";
+import SearchInput from "./shared/SearchInput";
+
+function TopSearchNav(props) {
+  return (
+    <HeaderBox>
+      <div>
+        <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
+      </div>
+
+      <SearchInput placeholder="계정 검색" />
+    </HeaderBox>
+  );
+}
+
+export default TopSearchNav;
