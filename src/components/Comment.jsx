@@ -5,10 +5,10 @@ import HeaderBox from "./shared/HeaderBox";
 function Comment(props) {
   return (
     <HeaderBox>
-      <AvtarWrapper>
+      <AvatarWrapper>
         <img className="avatar" src="/assets/profile.svg" alt="logo" />
         <input className="comment" type="text" placeholder="댓글 입력하기" />
-      </AvtarWrapper>
+      </AvatarWrapper>
 
       <UploadWrapper>
         <span className="upload">게시</span>
@@ -17,7 +17,7 @@ function Comment(props) {
   );
 }
 
-const AvtarWrapper = styled.div`
+const AvatarWrapper = styled.div`
   display: flex;
   align-items: center;
 
