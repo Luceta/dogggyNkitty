@@ -45,7 +45,7 @@ const COLORS = {
   `,
 };
 
-function Button({ disabled, size, color, children }) {
+function Button({ disabled, size, color, children, margin }) {
   const sizeStyle = SIZES[size];
   const variantStyle = COLORS[color];
   return (
@@ -59,7 +59,6 @@ const StyledButton = styled.button`
   ${(props) => props.sizeStyle}
   ${(props) => props.variantStyle}
 
-  margin: 0;
   border: none;
   cursor: pointer;
   width: var(--button-width, 1rem);
