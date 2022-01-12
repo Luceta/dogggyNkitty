@@ -8,7 +8,7 @@ function Login(props) {
       <StatusBar />
       <LoginMain>
         <h1>
-          <img src="/assets/symbol-logo-gray@2x.png" alt="Logo" />
+          <img className="logo-gray" src="/assets/symbol-logo-gray@2x.png" alt="Logo" />
         </h1>
 
         <LoginContainer>
@@ -34,32 +34,46 @@ function Login(props) {
 }
 
 const LoginMain = styled.main`
-  height: calc(100vh - 20px);
+  position: relative;
+  height: 100%;
   background-color: #937456;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 180px;
+
+  .logo-gray {
+    width: 144px;
+    height: 144px;
+  }
 `;
 
 const LoginContainer = styled.ul`
-  width: 100%;
   position: absolute;
   bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  padding: 50px 82px;
+  /*padding: 50px 0 82px;*/
+  padding: 50px 34px 0 34px;
 
   .link-sns-login {
     position: relative;
     display: block;
+    width: 322px;
+    height: 44px;
     padding: 13px 0;
     margin-bottom: 10px;
     border-radius: 44px;
     color: #767676;
     font-weight: 400;
     text-align: center;
+    font-size: 14px;
+    line-height: 18px;
   }
 
   .local-login {
@@ -76,12 +90,12 @@ const LoginContainer = styled.ul`
   }
 
   .link-sns-login::before {
-    display: block;
-    content: "";
-    margin-left: 17px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    display: block;
+    content: "";
+    margin-left: 17px;
     width: 24px;
     height: 24px;
     background-image: url("/assets/message-circle.png");
