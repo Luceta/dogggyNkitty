@@ -1,8 +1,8 @@
 import React from "react";
-import Splash from "../components/Splash/Splash";
+import Login from "../components/Login/Login";
 
 function App() {
-  return <Splash />;
+  return <Login />;
 }
 
 export default App;
