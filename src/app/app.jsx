@@ -1,10 +1,13 @@
 import React from "react";
-import Home from "../components/Home/Home";
-import Login from "../components/Login/Login";
-import Splash from "../components/Splash/Splash";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import Routes from "../routes";
 
 function App() {
-  return <Home />;
+  return (
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 }
 
 export default App;

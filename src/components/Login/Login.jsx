@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StatusBar from "../Statusbar/Statusbar";
 
@@ -22,17 +23,18 @@ function Login(props) {
             <a href="/#facebok">페이스북 계정으로 로그인</a>
           </li>
           <li className="local-login">
-            <a href="#email">이메일로 로그인</a>
-            <a className="join" href="#email">
+            <button type="button">이메일로 로그인</button>
+            <Link to="/signup" className="join">
               회원가입
-            </a>
+            </Link>
           </li>
         </LoginContainer>
       </LoginMain>
     </>
   );
 }
-
+// <a href="#email">이메일로 로그인</a>;
+//   <a className="join" href="#email" 회원가입 </a>
 const LoginMain = styled.main`
   position: relative;
   height: 100%;
@@ -82,6 +84,23 @@ const LoginContainer = styled.ul`
     align-items: center;
     font-size: 12px;
     line-height: 15px;
+
+    & button {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676;
+      border: none;
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    & .join {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676;
+    }
   }
   .local-login .join::before {
     content: "|";
