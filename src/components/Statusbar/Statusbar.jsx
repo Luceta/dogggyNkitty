@@ -35,6 +35,8 @@ const StatusContainer = styled.div`
   .status-bar__column {
     width: 33%;
     margin: 0 5px;
+    font-size: 12px;
+    line-height: 14px;
   }
 
   .status-bar__column:nth-child(2) {

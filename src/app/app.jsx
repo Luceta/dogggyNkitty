@@ -1,9 +1,8 @@
 import React from "react";
-
-import StatusBar from "../components/Statusbar/Statusbar";
+import Splash from "../components/Splash/Splash";
 
 function App() {
-  return <StatusBar />;
+  return <Splash />;
 }
 
 export default App;
