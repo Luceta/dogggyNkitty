@@ -3,26 +3,33 @@ import styled from "styled-components";
 import FormField from "../FormField/FormField";
 import StatusBar from "../Statusbar/Statusbar";
 import Button from "../shared/Button";
+import useInput from "../hooks/useInput";
 
 function Signup(props) {
-  const { onSubmit } = props;
+  const email = useInput("");
+  const password = useInput("");
   return (
     <>
       <StatusBar />
       <Wrapper>
         <h1>이메일로 회원가입</h1>
         <div>
-          <form onSubmit={onSubmit}>
-            <FormField labelName="EmailInput" title="이메일" type="email" placeholder="이메일 주소를 알려주세요." />
+          <form>
+            <FormField
+              labelName="EmailInput"
+              title="이메일"
+              type="email"
+              placeholder="이메일 주소를 알려주세요."
+              controller={email}
+            />
             <FormField
               labelName="passwordInput"
               title="패스워드"
               type="password"
+              controller={password}
               placeholder="비밀번호를 설정해 주세요."
             />
-            <Button size="lg" margin="30">
-              다음
-            </Button>
+            <Button size="lg">다음</Button>
           </form>
         </div>
       </Wrapper>

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StatusBar from "../Statusbar/Statusbar";
 
-function Lobby() {
+function Lobby({ display }) {
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    display(true);
+  };
+
   return (
     <>
       <StatusBar />
@@ -23,7 +28,9 @@ function Lobby() {
             <a href="/#facebok">페이스북 계정으로 로그인</a>
           </li>
           <li className="local-login">
-            <button type="button">이메일로 로그인</button>
+            <button onClick={handleClick} type="button">
+              이메일로 로그인
+            </button>
             <Link to="/join" className="join">
               회원가입
             </Link>

@@ -2,7 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 function FormField(props) {
-  const { title, type, placeholder, labelName, onChange, onKeypress } = props;
+  const {
+    title,
+    type,
+    placeholder,
+    labelName,
+    controller: { value, onChange },
+  } = props;
   return (
     <Wrapper>
       {title && <legend>{title}</legend>}
@@ -11,9 +17,10 @@ function FormField(props) {
           id={labelName}
           name={title}
           type={type}
+          value={value}
           placeholder={placeholder}
-          onKeyPress={onKeypress}
           onChange={onChange}
+          autoComplete="on"
         />
       </label>
     </Wrapper>

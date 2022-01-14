@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Login from "../Login/Login";
+import Lobby from "../Lobby/Lobby";
 import Splash from "../Splash/Splash";
+import Login from "../Login/Login";
+import useInput from "../hooks/useInput";
+import { loginAPI } from "../../api/api";
 
 function Home(props) {
+  const [loginDisplay, setLoginDisplay] = useState(false);
+  const [warning, setWarning] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+  const email = useInput("");
+  const password = useInput("");
+
+  const loginButtonActive = () => {
+    const emailInputLength = email.value.split("").length;
+    const passwordInputLength = password.value.split("").length;
+
+    if (emailInputLength > 1 && passwordInputLength > 1) {
+      setIsActive(false);
+    } else {
+      setIsActive(true);
+    }
+  };
+
+  useEffect(() => {
+    loginButtonActive();
+  }, [email, password]);
+
+  const handleClick = async (ev) => {
+    ev.preventDefault();
+    const loginResponse = await (await loginAPI(email.value, password.value)).json();
+
+    if (loginResponse.status === 422) {
+      setWarning(true);
+    } else {
+      // TODO: 토큰을 저장하고 redux로 관리 해줌.
+    }
+  };
+
   return (
     <HomeContainer>
       <article>
@@ -15,7 +50,17 @@ function Home(props) {
           </PhoneWrapper>
         </div>
         <div className="login-wrapper">
-          <Login />
+          {loginDisplay ? (
+            <Login
+              email={email}
+              password={password}
+              handleClick={handleClick}
+              handleDisplay={warning}
+              isActive={isActive}
+            />
+          ) : (
+            <Lobby display={setLoginDisplay} />
+          )}
         </div>
       </article>
     </HomeContainer>
@@ -23,17 +68,17 @@ function Home(props) {
 }
 
 const PhoneWrapper = styled.div`
-  width: 390px;
-  height: 600px;
+  width: 450px;
+  height: 900px;
   background-image: url("/assets/iphone.png");
   background-size: contain;
   background-repeat: no-repeat;
 
   .container {
-    width: 234px;
-    height: 410px;
+    width: 339.5px;
+    height: 595px;
     background-color: #937456;
-    margin: 80px 0 0 38px;
+    margin: 116px 55px;
   }
 `;
 
@@ -54,8 +99,8 @@ const HomeContainer = styled.section`
     align-items: stretch;
   }
   .login-wrapper {
-    width: 390px;
-    height: 600px;
+    width: 450px;
+    height: 900px;
     margin: 0 20px;
   }
 `;
