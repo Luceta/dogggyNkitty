@@ -2,142 +2,73 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StatusBar from "../Statusbar/Statusbar";
+import FormField from "../FormField/FormField";
+import Button from "../shared/Button";
 
-function Login(props) {
+function Login({ isActive, handleClick, email, password, handleDisplay }) {
   return (
     <>
       <StatusBar />
-      <LoginMain>
-        <h1>
-          <img className="logo-gray" src="/assets/symbol-logo-gray@2x.png" alt="Logo" />
-        </h1>
+      <Wrapper>
+        <h1>로그인</h1>
+        <section>
+          <h2 className="ir">이메일, 비밀번호 입력 로그인 창</h2>
+          <form>
+            <FormField labelName="EmailInput" title="이메일" type="email" controller={email} />
+            <FormField labelName="passwordInput" title="패스워드" type="password" controller={password} />
+            {handleDisplay && <strong className="input-warning-msg">*이메일 또는 비밀번호가 일치하지 않습니다.</strong>}
+            <Button type="button" size="lg" onClick={handleClick} disabled={isActive}>
+              로그인
+            </Button>
 
-        <LoginContainer>
-          <li className="link-sns-login icon-kakao">
-            <a href="#kakao">카카오톡 계정으로 로그인</a>
-          </li>
-          <li className="link-sns-login icon-goggle">
-            <a href="#google">구글 계정으로 로그인</a>
-          </li>
-          <li className="link-sns-login icon-facebook">
-            <a href="/#facebok">페이스북 계정으로 로그인</a>
-          </li>
-          <li className="local-login">
-            <button type="button">이메일로 로그인</button>
-            <Link to="/signup" className="join">
-              회원가입
+            <Link to="/join" className="join">
+              이메일로 회원가입
             </Link>
-          </li>
-        </LoginContainer>
-      </LoginMain>
+          </form>
+        </section>
+      </Wrapper>
     </>
   );
 }
-// <a href="#email">이메일로 로그인</a>;
-//   <a className="join" href="#email" 회원가입 </a>
-const LoginMain = styled.main`
-  position: relative;
-  height: 100%;
-  background-color: #937456;
+
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 180px;
-
-  .logo-gray {
-    width: 144px;
-    height: 144px;
-  }
-`;
-
-const LoginContainer = styled.ul`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  /*padding: 50px 0 82px;*/
-  padding: 50px 34px 0 34px;
-
-  .link-sns-login {
-    position: relative;
-    display: block;
-    width: 322px;
-    height: 44px;
-    padding: 13px 0;
-    margin-bottom: 10px;
-    border-radius: 44px;
-    color: #767676;
-    font-weight: 400;
+  h1 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    margin: 30px 0;
     text-align: center;
-    font-size: 14px;
-    line-height: 18px;
   }
-
-  .local-login {
+  .ir {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+  }
+  .join {
+    margin-top: 20px;
+    font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-
-    & button {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 15px;
-      color: #767676;
-      border: none;
-      cursor: pointer;
-      background-color: #fff;
-    }
-
-    & .join {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 15px;
-      color: #767676;
-    }
-  }
-  .local-login .join::before {
-    content: "|";
-    margin: 0px 12px;
     color: #767676;
+    text-align: center;
   }
-
-  .link-sns-login::before {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  .input-warning-msg {
     display: block;
-    content: "";
-    margin-left: 17px;
-    width: 24px;
-    height: 24px;
-    background-image: url("/assets/message-circle.png");
-  }
-
-  .link-sns-login.icon-kakao {
-    border: 1px solid #f2c94c;
-  }
-
-  .link-sns-login.icon-goggle {
-    border: 1px solid #767676;
-  }
-
-  .link-sns-login.icon-goggle::before {
-    background-image: url("/assets/google.png");
-  }
-
-  .link-sns-login.icon-facebook {
-    border: 1px solid #2d9cdb;
-  }
-
-  .link-sns-login.icon-facebook::before {
-    background-image: url("/assets/facebook.png");
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #eb5757;
+    margin: -30px 0 30px 0;
   }
 `;
 

@@ -45,11 +45,11 @@ const COLORS = {
   `,
 };
 
-function Button({ disabled, size, color, children, margin }) {
+function Button({ type, disabled, size, color, children, onClick }) {
   const sizeStyle = SIZES[size];
   const variantStyle = COLORS[color];
   return (
-    <StyledButton disabled={disabled} sizeStyle={sizeStyle} variantStyle={variantStyle}>
+    <StyledButton type={type} disabled={disabled} sizeStyle={sizeStyle} variantStyle={variantStyle} onClick={onClick}>
       {children}
     </StyledButton>
   );

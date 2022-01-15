@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Tab(props) {
+function TabMenu() {
   return (
     <TabNav>
       <TabNavList>
@@ -35,6 +35,11 @@ function Tab(props) {
 }
 
 const TabNav = styled.nav`
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 390px;
   box-sizing: border-box;
   padding: 14px 33px;
   border-top: 1px solid rgba(121, 121, 121, 0.3);
@@ -66,7 +71,7 @@ const TabNavList = styled.ul`
   }
 `;
 
-export default Tab;
+export default TabMenu;
 
 /*
 
