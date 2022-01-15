@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Lobby from "../Lobby/Lobby";
-import Splash from "../Splash/Splash";
-import Login from "../Login/Login";
-import useInput from "../hooks/useInput";
+import Lobby from "../../components/Lobby/Lobby";
+import Splash from "../../components/Splash/Splash";
+import Login from "../../components/Login/Login";
+import useInput from "../../components/hooks/useInput";
 import getToken from "../../thunks";
 
 function Home({ login, loginStatus }) {

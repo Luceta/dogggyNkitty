@@ -3,18 +3,8 @@ import styled from "styled-components";
 import FormField from "../../components/FormField/FormField";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import Button from "../../components/shared/Button";
-import useInput from "../../components/hooks/useInput";
 
-function Signup(props) {
-  const email = useInput("");
-  const password = useInput("");
-
-  const inputValidation = () => {};
-
-  const handleClick = (ev) => {
-    ev.preventDefault();
-  };
-
+function Signup({ email, password, handleClick }) {
   return (
     <>
       <StatusBar />
@@ -62,7 +52,7 @@ const Wrapper = styled.div`
   }
 
   .input-warning-msg {
-    display: block;
+    display: none;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;

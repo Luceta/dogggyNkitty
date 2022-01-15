@@ -39,7 +39,7 @@ const Wrapper = styled.fieldset`
 
   & legend {
     font-size: 12px;
-    color:#767676;
+    color: #767676;
     line-height: 15px;
     font-weight: 500;
     margin-bottom: 10px;
@@ -51,7 +51,8 @@ const Wrapper = styled.fieldset`
     line-height: 14px;
     padding-bottom: 8px;
     border: none;
-    border-bottom: 1px solid  #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+  }
 `;
 
 export default FormField;

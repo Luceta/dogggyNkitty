@@ -24,7 +24,7 @@ function TabMenu() {
           </a>
         </li>
         <li className="nav_btn">
-          <a href="#profile" className="nav_link">
+          <a href="/profile" className="nav_link">
             <img src="/assets/icon/icon-user.png" alt="profile icon" />
             <span>프로필</span>
           </a>
