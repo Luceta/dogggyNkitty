@@ -18,7 +18,13 @@
     "quotes": ["error", "double"],
     "eol-last": "error",
     "no-trailing-spaces": 0,
-    "indent": ["error", 2, { "SwitchCase": 4 }],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
     "keyword-spacing": 0,
     "spaced-comment": ["error", "always"],
     "no-unused-vars": "warn",

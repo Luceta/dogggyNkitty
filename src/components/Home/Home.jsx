@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import Lobby from "../Lobby/Lobby";
 import Splash from "../Splash/Splash";
 import Login from "../Login/Login";
 import useInput from "../hooks/useInput";
-import { loginAPI } from "../../api/api";
+import getToken from "../../thunks";
 
-function Home(props) {
+function Home({ login, loginStatus }) {
   const [loginDisplay, setLoginDisplay] = useState(false);
-  const [warning, setWarning] = useState(false);
   const [isActive, setIsActive] = useState(true);
   const email = useInput("");
   const password = useInput("");
@@ -28,15 +28,9 @@ function Home(props) {
     loginButtonActive();
   }, [email, password]);
 
-  const handleClick = async (ev) => {
+  const handleClick = (ev) => {
     ev.preventDefault();
-    const loginResponse = await (await loginAPI(email.value, password.value)).json();
-
-    if (loginResponse.status === 422) {
-      setWarning(true);
-    } else {
-      // TODO: 토큰을 저장하고 redux로 관리 해줌.
-    }
+    login(email.value, password.value);
   };
 
   return (
@@ -55,7 +49,7 @@ function Home(props) {
               email={email}
               password={password}
               handleClick={handleClick}
-              handleDisplay={warning}
+              handleDisplay={loginStatus}
               isActive={isActive}
             />
           ) : (
@@ -105,4 +99,16 @@ const HomeContainer = styled.section`
   }
 `;
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    loginStatus: state.ui.lobby.status,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => dispatch(getToken(email, password)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

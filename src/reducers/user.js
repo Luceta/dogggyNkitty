@@ -1,25 +1,32 @@
-// toolkit 사용 import { createSlice } from " redux toolkit";
-
-// action Type name
-
-export const LOGIN_USER = "LOGIN_USER";
-export const LOGOUT = "LOGOUT";
-export const REGISTER_USER = "REGISTER_USER";
+import { UPDATE_USER, SET_CURRENT_USER } from "./types";
 
 const initialState = {
   id: "",
   email: "",
+  image: "",
   username: "",
   accountname: "",
+  intro: "",
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_USER:
+    case UPDATE_USER: {
       return { ...state };
-    case LOGOUT:
-      return { ...state };
+    }
+    case SET_CURRENT_USER: {
+      const { email, accountname, image, intro, username, _id: id } = action.payload;
 
+      return {
+        ...state,
+        id,
+        email,
+        image,
+        username,
+        accountname,
+        intro,
+      };
+    }
     default:
       return { ...state };
   }
