@@ -11,10 +11,9 @@ function Signup({
   username,
   accountname,
   intro,
-  handleJoinClick,
-  handleProfileClick,
-  handleProfileDisplay,
-  handleJoinDisplay,
+  handleNextClick,
+  handleJoin,
+  handleDisplay,
   handleEmailBlur,
   handlePasswordBlur,
   emailWarning,
@@ -22,12 +21,11 @@ function Signup({
   passwordWarning,
   handleButton,
 }) {
-  console.log(handleProfileDisplay, "display");
   return (
     <>
       <StatusBar />
       <form>
-        <Container style={handleJoinDisplay}>
+        {!handleDisplay && (
           <Wrapper>
             <h2>이메일로 회원가입</h2>
             <div>
@@ -64,23 +62,20 @@ function Signup({
               <strong className={passwordWarning ? "input-warning-msg password" : "input-warning-msg"}>
                 비밀번호는 6자리 이상이어야 합니다.
               </strong>
-              <Button disabled={handleButton} size="lg" onClick={handleJoinClick}>
+              <Button disabled={handleButton} size="lg" onClick={handleNextClick}>
                 다음
               </Button>
             </div>
           </Wrapper>
-        </Container>
-        {handleProfileDisplay && (
-          <Profile username={username} accountname={accountname} intro={intro} handleClick={handleProfileClick} />
+        )}
+
+        {handleDisplay && (
+          <Profile username={username} accountname={accountname} intro={intro} handleClick={handleJoin} />
         )}
       </form>
     </>
   );
 }
-// *이미 가입된 이메일 주소입니다.
-const Container = styled.div`
-  display: block;
-`;
 
 const Wrapper = styled.section`
   display: flex;
