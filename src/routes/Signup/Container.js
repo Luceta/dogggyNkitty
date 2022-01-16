@@ -11,7 +11,6 @@ export default function SignupContainer() {
   const intro = useInput("");
 
   const [showDisplay, setShowDisplay] = useState(false);
-  const [style, setStyle] = useState({ display: "block" });
   const [emailWarning, setEmailWarning] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordWarning, setPasswordWarning] = useState(false);
@@ -20,7 +19,7 @@ export default function SignupContainer() {
 
   const isButtonActive = () => {
     if (validCount !== 0) {
-      if (emailWarning === false && passwordWarning === false) {
+      if (!emailWarning && !passwordWarning) {
         setButtonActive(false);
       }
     } else {
@@ -42,8 +41,6 @@ export default function SignupContainer() {
       setEmailValid(true);
     }
   };
-
-  console.log(validCount, "check");
 
   const emailValidation = (element) => {
     const data = element;
@@ -76,13 +73,12 @@ export default function SignupContainer() {
     }
   };
 
-  const handleJoinClick = (ev) => {
+  const handleNextClick = (ev) => {
     ev.preventDefault();
     setShowDisplay(true);
-    setStyle({ display: "none" });
   };
 
-  const handleProfileClick = (ev) => {};
+  const handleJoin = () => {};
 
   return (
     <Signup
@@ -91,10 +87,9 @@ export default function SignupContainer() {
       username={username}
       accountname={accountname}
       intro={intro}
-      handleJoinClick={handleJoinClick}
-      handleProfileClick={handleProfileClick}
-      handleProfileDisplay={showDisplay}
-      handleJoinDisplay={style}
+      handleNextClick={handleNextClick}
+      handleJoin={handleJoin}
+      handleDisplay={showDisplay}
       handleEmailBlur={emailValidation}
       handlePasswordBlur={passwordValidation}
       emailWarning={emailWarning}
