@@ -22,11 +22,10 @@ export const signupAPI = (email, password, username, accountname, image) => {
   return fetch(SIGN_UP, options);
 };
 
-export const checkEmailAPI = (email, password) => {
+export const checkEmailAPI = (email) => {
   const data = {
     user: {
       email,
-      password,
     },
   };
 

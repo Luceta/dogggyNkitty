@@ -5,7 +5,7 @@ import StatusBar from "../Statusbar/Statusbar";
 import TabMenu from "../shared/Tab";
 import TopMainNav from "../TopMainNav";
 
-function Main(props) {
+function Main() {
   return (
     <>
       <StatusBar />
