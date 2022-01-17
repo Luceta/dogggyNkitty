@@ -3,7 +3,6 @@ import { GET_TOKEN_OK, GET_TOKEN_FAIL, LOGOUT } from "./types";
 const initialState = {
   lobby: {
     isLogin: false,
-    status: null,
   },
 };
 
@@ -15,7 +14,6 @@ const authReducer = (state = initialState, action) => {
         lobby: {
           ...state.lobby,
           isLogin: true,
-          status: false,
         },
       };
     }
@@ -25,7 +23,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         lobby: {
           ...state.lobby,
-          status: true,
+          isLogin: false,
         },
       };
     }
@@ -35,7 +33,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         lobby: {
           isLogin: false,
-          status: null,
         },
       };
     }

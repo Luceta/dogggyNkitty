@@ -12,6 +12,7 @@ function Home({ login, loginStatus }) {
   const [isActive, setIsActive] = useState(true);
   const email = useInput("");
   const password = useInput("");
+  const [warning, setWarning] = useState(false);
 
   const loginButtonActive = () => {
     const emailInputLength = email.value.split("").length;
@@ -31,6 +32,9 @@ function Home({ login, loginStatus }) {
   const handleClick = (ev) => {
     ev.preventDefault();
     login(email.value, password.value);
+    if (!loginStatus) {
+      setWarning(true);
+    }
   };
 
   return (
@@ -49,7 +53,7 @@ function Home({ login, loginStatus }) {
               email={email}
               password={password}
               handleClick={handleClick}
-              handleDisplay={loginStatus}
+              handleDisplay={warning}
               isActive={isActive}
             />
           ) : (
@@ -101,7 +105,7 @@ const HomeContainer = styled.section`
 
 const mapStateToProps = (state) => {
   return {
-    loginStatus: state.ui.lobby.status,
+    loginStatus: state.ui.lobby.isLogin,
   };
 };
 
