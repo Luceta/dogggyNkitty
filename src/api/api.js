@@ -4,20 +4,24 @@ const LOGIN = `${BASE_URL}/user/login`;
 const EMAIL_VALID = `${BASE_URL}/user/emailvalid`;
 const UPLOAD_IMAGE = `${BASE_URL}/image/uploadfile`;
 
-export const signupAPI = (email, password, username, accountname, image) => {
-  const data = new FormData();
-  data.append("email", email);
-  data.append("password", password);
-  data.append("username", username);
-  data.append("accountname", accountname);
-  data.append("image", image);
+export const signupAPI = (email, password, username, accountname, intro, image) => {
+  const data = {
+    user: {
+      email,
+      password,
+      username,
+      accountname,
+      intro,
+      image,
+    },
+  };
 
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: data,
+    body: JSON.stringify(data),
   };
 
   return fetch(SIGN_UP, options);
@@ -62,12 +66,8 @@ export const imageUploadAPI = (files) => {
   const formData = new FormData();
   formData.append("image", files[0]);
 
-  console.log(formData, "form data why empty?");
   const options = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: formData,
   };
 
