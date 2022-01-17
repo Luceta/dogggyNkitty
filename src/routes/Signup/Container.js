@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Signup from "./Signup";
 import useInput from "../../components/hooks/useInput";
-import { checkEmailAPI } from "../../api/api";
+import { checkEmailAPI, imageUploadAPI } from "../../api/api";
 
 export default function SignupContainer() {
   const email = useInput("");
@@ -10,10 +10,28 @@ export default function SignupContainer() {
   const accountname = useInput("");
   const intro = useInput("");
 
+  const [imageFile, setImageFile] = useState(null);
+
+  const handleChangeFile = async (ev) => {
+    const file = ev.target.files[0];
+    const testForm = new FormData();
+
+    testForm.append("img", file);
+    console.log(testForm, "why empty obejct?");
+
+    setImageFile(ev.target.files);
+
+    const response = await imageUploadAPI(imageFile);
+    const result = await response.json();
+    console.log(result, "result");
+  };
+
   const [showDisplay, setShowDisplay] = useState(false);
   const [emailWarning, setEmailWarning] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [passwordWarning, setPasswordWarning] = useState(false);
+  const [usernameWarning, setUsernameWarning] = useState(false);
+  const [accoutnameWarning, setAccountnameWarning] = useState(false);
   const [buttonActive, setButtonActive] = useState(true);
   const [validCount, setValidCount] = useState(0);
 
@@ -80,6 +98,27 @@ export default function SignupContainer() {
 
   const handleJoin = () => {};
 
+  const usernameValidation = (element) => {
+    const dataLength = element.split("").length;
+    if (dataLength < 2 || dataLength > 10) {
+      setUsernameWarning(true);
+    } else {
+      setUsernameWarning(false);
+    }
+  };
+
+  const accountnameValidation = (element) => {
+    const dataLength = element.split("").length;
+    if (dataLength !== 0) {
+      const userIdReg = /[^\w_.]/g;
+      if (!userIdReg.test(element)) {
+        setAccountnameWarning(false);
+      } else {
+        setAccountnameWarning(true);
+      }
+    }
+  };
+
   return (
     <Signup
       email={email}
@@ -87,14 +126,19 @@ export default function SignupContainer() {
       username={username}
       accountname={accountname}
       intro={intro}
+      avatar={handleChangeFile}
       handleNextClick={handleNextClick}
       handleJoin={handleJoin}
       handleDisplay={showDisplay}
       handleEmailBlur={emailValidation}
       handlePasswordBlur={passwordValidation}
+      handleUsernameBlur={usernameValidation}
+      handleAccountnameBlur={accountnameValidation}
       emailWarning={emailWarning}
       emailValid={emailValid}
       passwordWarning={passwordWarning}
+      usernameWarning={usernameWarning}
+      accoutnameWarning={accoutnameWarning}
       handleButton={buttonActive}
     />
   );

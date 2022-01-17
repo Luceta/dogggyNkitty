@@ -11,14 +11,19 @@ function Signup({
   username,
   accountname,
   intro,
+  avatar,
   handleNextClick,
   handleJoin,
   handleDisplay,
   handleEmailBlur,
   handlePasswordBlur,
+  handleUsernameBlur,
+  handleAccountnameBlur,
   emailWarning,
   emailValid,
+  usernameWarning,
   passwordWarning,
+  accoutnameWarning,
   handleButton,
 }) {
   return (
@@ -70,7 +75,17 @@ function Signup({
         )}
 
         {handleDisplay && (
-          <Profile username={username} accountname={accountname} intro={intro} handleClick={handleJoin} />
+          <Profile
+            username={username}
+            accountname={accountname}
+            intro={intro}
+            avatar={avatar}
+            handleClick={handleJoin}
+            handleUsernameBlur={handleUsernameBlur}
+            handleAccountnameBlur={handleAccountnameBlur}
+            usernameWarning={usernameWarning}
+            accoutnameWarning={accoutnameWarning}
+          />
         )}
       </form>
     </>

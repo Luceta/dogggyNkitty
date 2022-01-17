@@ -3,14 +3,31 @@ import styled from "styled-components";
 import Button from "../shared/Button";
 import FormField from "../FormField/FormField";
 
-function Profile({ username, accountname, intro, handleClick }) {
+function Profile({
+  username,
+  accountname,
+  intro,
+  avatar,
+  handleClick,
+  handleUsernameBlur,
+  handleAccountnameBlur,
+  usernameWarning,
+  accoutnameWarning,
+}) {
   return (
     <Wrapper>
       <h2>프로필 설정</h2>
       <p className="profile-info-text">나중에 언제든지 변경 할 수 있습니다.</p>
       <label htmlFor="profile-image" className="profile-image-label">
         <img src="/assets/basic-profile-img@lg.png" alt="profile-avatar" className="profile-avatar" />
-        <input type="file" name="profileImage" id="profile-image" accept="image/*" className="input-ir" />
+        <input
+          type="file"
+          name="profileImage"
+          id="profile-image"
+          accept="image/*"
+          className="input-ir"
+          onChange={avatar}
+        />
       </label>
       <div>
         <FormField
@@ -19,14 +36,21 @@ function Profile({ username, accountname, intro, handleClick }) {
           type="password"
           placeholder="2~10자 이내여야 합니다."
           controller={username}
+          onBlur={handleUsernameBlur}
         />
-        <strong className="input-warning-msg">*2자~10자 이내여야 합니다.</strong>
+        <strong className={usernameWarning ? "input-warning-msg username" : "input-warning-msg"}>
+          *2자~10자 이내여야 합니다.
+        </strong>
         <FormField
           labelName="accountname"
           title="계정 ID"
           placeholder="영문, 숫자, 특수문자(,), (_)만 사용 가능합니다."
           controller={accountname}
+          onBlur={handleAccountnameBlur}
         />
+        <strong className={accoutnameWarning ? "input-warning-msg accountname" : "input-warning-msg"}>
+          *영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.
+        </strong>
         <FormField
           labelName="intro"
           title="소개"
@@ -98,11 +122,19 @@ const Wrapper = styled.section`
     font-size: 12px;
     line-height: 14px;
     color: rgb(235, 87, 87);
-    margin-top: 6px;
+    margin: -9px 0 20px 0;
   }
 
-  .input-warning-msg.password {
-    margin-bottom: 30px;
+  .input-warning-msg.username {
+    display: block;
+    border-top: 1px solid #eb5757;
+    margin-top: -16px;
+  }
+
+  .input-warning-msg.accountname {
+    display: block;
+    border-top: 1px solid #eb5757;
+    margin-top: -16px;
   }
 `;
 

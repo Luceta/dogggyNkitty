@@ -2,6 +2,7 @@ const BASE_URL = "http://146.56.183.55:5050";
 const SIGN_UP = `${BASE_URL}/user`;
 const LOGIN = `${BASE_URL}/user/login`;
 const EMAIL_VALID = `${BASE_URL}/user/emailvalid`;
+const UPLOAD_IMAGE = `${BASE_URL}/image/uploadfile`;
 
 export const signupAPI = (email, password, username, accountname, image) => {
   const data = new FormData();
@@ -55,4 +56,20 @@ export const loginAPI = (email, password) => {
     body: JSON.stringify(data),
   };
   return fetch(LOGIN, options);
+};
+
+export const imageUploadAPI = (files) => {
+  const formData = new FormData();
+  formData.append("image", files[0]);
+
+  console.log(formData, "form data why empty?");
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: formData,
+  };
+
+  return fetch(UPLOAD_IMAGE, options);
 };
