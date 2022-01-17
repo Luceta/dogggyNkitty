@@ -66,17 +66,8 @@ export const imageUploadAPI = (files) => {
   const formData = new FormData();
   formData.append("image", files[0]);
 
-<<<<<<< HEAD
-  console.log(formData, "form data why empty?");
   const options = {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-=======
-  const options = {
-    method: "POST",
->>>>>>> feature/profile
     body: formData,
   };
 

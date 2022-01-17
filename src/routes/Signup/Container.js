@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Signup from "./Signup";
 import useInput from "../../components/hooks/useInput";
 import { checkEmailAPI, imageUploadAPI, signupAPI } from "../../api/api";
