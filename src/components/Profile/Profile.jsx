@@ -8,7 +8,9 @@ function Profile({
   accountname,
   intro,
   avatar,
+  handleAvatar,
   handleClick,
+  handleButton,
   handleUsernameBlur,
   handleAccountnameBlur,
   usernameWarning,
@@ -19,21 +21,25 @@ function Profile({
       <h2>프로필 설정</h2>
       <p className="profile-info-text">나중에 언제든지 변경 할 수 있습니다.</p>
       <label htmlFor="profile-image" className="profile-image-label">
-        <img src="/assets/basic-profile-img@lg.png" alt="profile-avatar" className="profile-avatar" />
+        <img
+          src={!avatar ? "/assets/basic-profile-img@lg.png" : avatar}
+          alt="profile-avatar"
+          className="profile-avatar"
+        />
         <input
           type="file"
           name="profileImage"
           id="profile-image"
           accept="image/*"
           className="input-ir"
-          onChange={avatar}
+          onChange={handleAvatar}
         />
       </label>
       <div>
         <FormField
           labelName="username"
           title="사용자 이름"
-          type="password"
+          type="text"
           placeholder="2~10자 이내여야 합니다."
           controller={username}
           onBlur={handleUsernameBlur}
@@ -57,7 +63,7 @@ function Profile({
           placeholder="자신과 판매할 상품에 대해 소개해 주세요."
           controller={intro}
         />
-        <Button size="lg" onClick={handleClick}>
+        <Button disabled={handleButton} size="lg" onClick={handleClick}>
           감귤마켓 시작하기
         </Button>
       </div>

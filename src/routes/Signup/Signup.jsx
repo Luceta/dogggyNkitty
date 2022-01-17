@@ -12,6 +12,7 @@ function Signup({
   accountname,
   intro,
   avatar,
+  handleAvatar,
   handleNextClick,
   handleJoin,
   handleDisplay,
@@ -80,11 +81,13 @@ function Signup({
             accountname={accountname}
             intro={intro}
             avatar={avatar}
+            handleAvatar={handleAvatar}
             handleClick={handleJoin}
             handleUsernameBlur={handleUsernameBlur}
             handleAccountnameBlur={handleAccountnameBlur}
             usernameWarning={usernameWarning}
             accoutnameWarning={accoutnameWarning}
+            handleButton={handleButton}
           />
         )}
       </form>
