@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../shared/Button";
-import FormField from "../FormField/FormField";
+import Button from "../../components/shared/Button";
+import FormField from "../../components/FormField/FormField";
 
-function Profile({
+function SignupProfile({
   username,
   accountname,
   intro,
@@ -144,4 +144,4 @@ const Wrapper = styled.section`
   }
 `;
 
-export default Profile;
+export default SignupProfile;

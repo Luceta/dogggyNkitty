@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBatteryFull, faSignal, faWifi } from "@fortawesome/free-solid-svg-icons";
 
-function StatusBar(props) {
+function StatusBar() {
   return (
     <StatusContainer>
       <div className="status-bar__column">

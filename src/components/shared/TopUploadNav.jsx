@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderBox from "./shared/HeaderBox";
-import Button from "./shared/Button";
+import HeaderBox from "./HeaderBox";
+import Button from "./Button";
 
 function TopUploadNav(props) {
   return (

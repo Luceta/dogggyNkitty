@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import HeaderBox from "./shared/HeaderBox";
+import HeaderBox from "./HeaderBox";
 
 function TopMainNav({ children }) {
   return (

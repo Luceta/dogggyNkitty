@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FormField from "../../components/FormField/FormField";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import Button from "../../components/shared/Button";
-import Profile from "../../components/Profile/Profile";
+import SignupProfile from "../SignupProfile/SignupProfile";
 
 function Signup({
   email,
@@ -76,7 +76,7 @@ function Signup({
         )}
 
         {handleDisplay && (
-          <Profile
+          <SignupProfile
             username={username}
             accountname={accountname}
             intro={intro}

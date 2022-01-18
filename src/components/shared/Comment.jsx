@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import HeaderBox from "./shared/HeaderBox";
+import HeaderBox from "./HeaderBox";
 
-function Comment(props) {
+function Comment() {
   return (
     <HeaderBox>
       <AvatarWrapper>
