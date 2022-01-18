@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderBox from "./shared/HeaderBox";
-import SearchInput from "./shared/SearchInput";
+import HeaderBox from "./HeaderBox";
+import SearchInput from "./SearchInput";
 
 function TopSearchNav(props) {
   return (

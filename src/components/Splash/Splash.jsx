@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Statusbar from "../Statusbar/Statusbar";
 
-function Splash(props) {
+function Splash() {
   return (
     <>
       <Statusbar />

@@ -10,9 +10,9 @@ import getToken from "../../thunks";
 function Home({ login, loginStatus }) {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [isActive, setIsActive] = useState(true);
+  const [warning, setWarning] = useState(false);
   const email = useInput("");
   const password = useInput("");
-  const [warning, setWarning] = useState(false);
 
   const loginButtonActive = () => {
     const emailInputLength = email.value.split("").length;
@@ -29,11 +29,17 @@ function Home({ login, loginStatus }) {
     loginButtonActive();
   }, [email, password]);
 
-  const handleClick = (ev) => {
+  useEffect(() => {
+    return () => setWarning(false);
+  }, []);
+
+  const handleClick = async (ev) => {
     ev.preventDefault();
-    login(email.value, password.value);
+    await login(email.value, password.value);
     if (!loginStatus) {
       setWarning(true);
+    } else {
+      setWarning(false);
     }
   };
 

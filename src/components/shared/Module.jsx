@@ -1,14 +1,14 @@
 import React from "react";
-import Button from "./shared/Button";
-import Alert from "./shared/Alert";
-import TabMenu from "./shared/Tab";
-import HeaderBasic from "./shared/HeaderBasic";
-import TopSearchNav from "./TopSearchNav";
+import Button from "./Button";
+import Alert from "./Alert";
+import TabMenu from "./Tab";
+import HeaderBasic from "./HeaderBasic";
 import TopMainNav from "./TopMainNav";
-import Comment from "./Comment";
 import TopUploadNav from "./TopUploadNav";
+import TopSearchNav from "./TopSearchNav";
+import Comment from "./Comment";
 
-function Module(props) {
+function Module() {
   return (
     <>
       <h1>modal</h1>

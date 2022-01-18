@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StatusBar from "../Statusbar/Statusbar";
 import TabMenu from "../shared/Tab";
-import TopMainNav from "../TopMainNav";
+import TopMainNav from "../shared/TopMainNav";
 
 function Main() {
   return (
