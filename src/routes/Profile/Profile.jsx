@@ -4,7 +4,11 @@ import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 
-function Profile() {
+function Profile({ history }) {
+  const handleProductClick = () => {
+    history.push("/product");
+  };
+
   return (
     <>
       <StatusBar />
@@ -31,7 +35,7 @@ function Profile() {
               </a>
               <div className="user-info-btn-boxs">
                 <button type="button">프로필 수정</button>
-                <button type="button" className="product-add-button">
+                <button type="button" className="product-add-button" onClick={handleProductClick}>
                   상품 등록
                 </button>
               </div>

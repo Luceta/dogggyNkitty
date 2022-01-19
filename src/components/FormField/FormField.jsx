@@ -9,6 +9,7 @@ function FormField(props) {
     labelName,
     controller: { value, onChange },
     onBlur,
+    handleKeyPress,
   } = props;
 
   return (
@@ -23,6 +24,7 @@ function FormField(props) {
           placeholder={placeholder}
           onChange={onChange}
           autoComplete="on"
+          onKeyPress={handleKeyPress}
           onBlur={onBlur ? () => onBlur(value) : null}
         />
       </label>
