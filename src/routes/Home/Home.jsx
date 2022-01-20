@@ -1,55 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import styled from "styled-components";
 import Lobby from "../../components/Lobby/Lobby";
-import Splash from "../../components/Splash/Splash";
 import Login from "../../components/Login/Login";
-import useInput from "../../components/hooks/useInput";
-import getToken from "../../thunks";
+import StatusBar from "../../components/Statusbar/Statusbar";
 
-function Home({ login, loginStatus }) {
-  const [loginDisplay, setLoginDisplay] = useState(false);
-  const [isActive, setIsActive] = useState(true);
-  const [warning, setWarning] = useState(false);
-  const email = useInput("");
-  const password = useInput("");
-
-  const loginButtonActive = () => {
-    const emailInputLength = email.value.split("").length;
-    const passwordInputLength = password.value.split("").length;
-
-    if (emailInputLength > 1 && passwordInputLength > 1) {
-      setIsActive(false);
-    } else {
-      setIsActive(true);
-    }
-  };
-
-  useEffect(() => {
-    loginButtonActive();
-  }, [email, password]);
-
-  useEffect(() => {
-    return () => setWarning(false);
-  }, []);
-
-  const handleClick = async (ev) => {
-    ev.preventDefault();
-    await login(email.value, password.value);
-    if (!loginStatus) {
-      setWarning(true);
-    } else {
-      setWarning(false);
-    }
-  };
-
+function Home({ email, password, handleClick, handleDisplay, loginDisplay, isActive, setLoginDisplay }) {
   return (
     <HomeContainer>
       <article>
         <div className="display-app">
           <PhoneWrapper>
             <div className="container">
-              <Splash />
+              <StatusBar />
+              <div className="logo-wrapper">
+                <img src="/assets/full-logo-gray@2x.png" alt="" />
+              </div>
             </div>
           </PhoneWrapper>
         </div>
@@ -59,7 +24,7 @@ function Home({ login, loginStatus }) {
               email={email}
               password={password}
               handleClick={handleClick}
-              handleDisplay={warning}
+              handleDisplay={handleDisplay}
               isActive={isActive}
             />
           ) : (
@@ -83,6 +48,19 @@ const PhoneWrapper = styled.div`
     height: 595px;
     background-color: #937456;
     margin: 116px 55px;
+  }
+
+  .logo-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 144px;
+      height: 144px;
+    }
   }
 `;
 
@@ -109,16 +87,4 @@ const HomeContainer = styled.section`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    loginStatus: state.ui.lobby.isLogin,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (email, password) => dispatch(getToken(email, password)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
