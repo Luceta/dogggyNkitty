@@ -6,6 +6,7 @@ import Main from "../components/Main/Main";
 import Profile from "./Profile/Profile";
 import Product from "./Product/Container";
 import Splash from "../components/Splash/Splash";
+import Search from "./Search/Search";
 
 function Routes({ isLogin }) {
   return (
@@ -15,7 +16,7 @@ function Routes({ isLogin }) {
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
       <Route path="/splash" component={Splash} />
-
+      <Route path="/search" component={Search} />
       <Redirect to="/" />
     </Switch>
   );
