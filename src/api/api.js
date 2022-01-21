@@ -93,3 +93,18 @@ export const uploadProduct = (product) => {
 
   return fetch(UPLOAD_PRODUCT, options);
 };
+
+export const searchUserAPI = (value) => {
+  const SEARCH_USER = `${BASE_URL}/user/searchuser/?keyword=${value}`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(SEARCH_USER, options);
+};

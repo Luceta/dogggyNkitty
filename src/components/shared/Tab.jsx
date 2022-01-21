@@ -1,40 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function TabMenu() {
   return (
-    <TabNav>
+    <TabNabContainer>
       <TabNavList>
-        <li className="nav_btn">
-          <a href="#home" className="nav_link">
+        <Nav>
+          <Link to="/" className="nav_link">
             <img src="/assets/icon/icon-home.png" alt="home icon" />
             <span>홈</span>
-          </a>
-        </li>
-        <li className="nav_btn">
-          <a href="#chat" className="nav_link">
+          </Link>
+        </Nav>
+
+        <Nav>
+          <Link to="/chat" className="nav_link">
             <img src="/assets/icon/icon-message-circle.svg" alt="chat icon" />
             <span>채팅</span>
-          </a>
-        </li>
-        <li className="nav_btn">
-          <a href="#edit" className="nav_link">
+          </Link>
+        </Nav>
+
+        <Nav>
+          <Link to="/edit" className="nav_link">
             <img src="/assets/icon/icon-edit.png" alt="upload icon" />
             <span>게시물 작성</span>
-          </a>
-        </li>
-        <li className="nav_btn">
-          <a href="/profile" className="nav_link">
+          </Link>
+        </Nav>
+
+        <Nav>
+          <Link to="/profile" className="nav_link">
             <img src="/assets/icon/icon-user.png" alt="profile icon" />
             <span>프로필</span>
-          </a>
-        </li>
+          </Link>
+        </Nav>
       </TabNavList>
-    </TabNav>
+    </TabNabContainer>
   );
 }
 
-const TabNav = styled.nav`
+const TabNabContainer = styled.nav`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -49,7 +53,9 @@ const TabNavList = styled.ul`
   display: flex;
   justify-content: space-between;
   list-style: none;
+`;
 
+const Nav = styled.li`
   .nav_link {
     display: flex;
     flex-direction: column;
@@ -72,12 +78,3 @@ const TabNavList = styled.ul`
 `;
 
 export default TabMenu;
-
-/*
-
-.nav_btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  */

@@ -18,6 +18,7 @@ export default styled.input`
   &:hover,
   &:focus,
   &:active {
-    border: 1px solid #414141;
+    border: 1px solid #c98128;
+    outline: none;
   }
 `;
