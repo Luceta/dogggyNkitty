@@ -15,9 +15,8 @@ function Routes({ isLogin }) {
       <Route path="/join" component={Signup} />
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
-      <Route path="/account/edit" component={EditProfile} />
       <Route path="/search" component={Search} />
-
+      <Route path="/account/edit" component={EditProfile} />
       <Redirect to="/" />
     </Switch>
   );

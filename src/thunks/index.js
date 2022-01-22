@@ -36,5 +36,3 @@ export const updateProfile = (user) => async (dispatch) => {
     console.log(error, "error");
   }
 };
-
-export default getToken;

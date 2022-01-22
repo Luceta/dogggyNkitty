@@ -61,7 +61,7 @@ const HomeMain = styled.main`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
   color: #fff;
   &:focus,
   &:hover,

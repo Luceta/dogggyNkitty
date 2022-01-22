@@ -9,7 +9,6 @@ function Profile({ history }) {
     history.push("/product");
   };
 
-
   const handleProfileClick = () => {
     history.push("/account/edit");
   };
@@ -39,13 +38,9 @@ function Profile({ history }) {
                 <span className="followings-txt">followings</span>
               </a>
               <div className="user-info-btn-boxs">
-
                 <button type="button" onClick={handleProfileClick}>
                   프로필 수정
                 </button>
-
-
-
                 <button type="button" className="product-add-button" onClick={handleProductClick}>
                   상품 등록
                 </button>
@@ -59,11 +54,7 @@ function Profile({ history }) {
             <ul className="product-list">
               <li className="user-product">
                 <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
+                  <img src="http://146.56.183.55:5050/1642843641728.gif" alt="user-product" className="product-image" />
                   <figcaption className="product-info">
                     <strong className="product-name">야너두?</strong>
                     <strong className="product-price">1,234 원</strong>
@@ -73,11 +64,7 @@ function Profile({ history }) {
 
               <li className="user-product">
                 <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
+                  <img src="http://146.56.183.55:5050/1642843641728.gif" alt="user-product" className="product-image" />
                   <figcaption className="product-info">
                     <strong className="product-name">야너두?</strong>
                     <strong className="product-price">1,234 원</strong>
@@ -87,11 +74,7 @@ function Profile({ history }) {
 
               <li className="user-product">
                 <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
+                  <img src="http://146.56.183.55:5050/1642843641728.gif" alt="user-product" className="product-image" />
                   <figcaption className="product-info">
                     <strong className="product-name">야너두?</strong>
                     <strong className="product-price">1,234 원</strong>
@@ -101,11 +84,7 @@ function Profile({ history }) {
 
               <li className="user-product">
                 <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
+                  <img src="http://146.56.183.55:5050/1642843641728.gif" alt="user-product" className="product-image" />
                   <figcaption className="product-info">
                     <strong className="product-name">야너두?</strong>
                     <strong className="product-price">1,234 원</strong>

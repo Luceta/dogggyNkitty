@@ -2,47 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Lobby from "../../components/Lobby/Lobby";
 import Login from "../../components/Login/Login";
-import useInput from "../../components/hooks/useInput";
-import getToken from "../../thunks";
 import StatusBar from "../../components/Statusbar/Statusbar";
-
-function Home({ login, loginStatus }) {
-  const [loginDisplay, setLoginDisplay] = useState(false);
-  const [isActive, setIsActive] = useState(true);
-  const [warning, setWarning] = useState(false);
-  const email = useInput("");
-  const password = useInput("");
-
-  const loginButtonActive = () => {
-    const emailInputLength = email.value.split("").length;
-    const passwordInputLength = password.value.split("").length;
-
-    if (emailInputLength > 1 && passwordInputLength > 1) {
-      setIsActive(false);
-    } else {
-      setIsActive(true);
-    }
-  };
-
-  useEffect(() => {
-    loginButtonActive();
-  }, [email, password]);
-
-  useEffect(() => {
-    return () => setWarning(false);
-  }, []);
-
-  const handleClick = async (ev) => {
-    ev.preventDefault();
-    await login(email.value, password.value);
-    if (!loginStatus) {
-      setWarning(true);
-    } else {
-      setWarning(false);
-    }
-  };
-
-
 
 function Home({ email, password, handleClick, handleDisplay, loginDisplay, isActive, setLoginDisplay }) {
   return (

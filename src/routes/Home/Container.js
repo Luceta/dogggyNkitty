@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Home from "./Home";
 import useInput from "../../components/hooks/useInput";
-import getToken from "../../thunks";
+import { getToken } from "../../thunks";
 
 function HomeContainer({ loginStatus, login }) {
   const [loginDisplay, setLoginDisplay] = useState(false);
