@@ -4,6 +4,7 @@ import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
+import PostList from "../../components/PostList/PostList";
 
 function Profile({ handleProfileClick, handleProductClick, products, user, profile }) {
   return (
@@ -49,6 +50,20 @@ function Profile({ handleProfileClick, handleProductClick, products, user, profi
         </Products>
         <Posts>
           <h2 className="ir">유저 포스트</h2>
+          <DisplaySection>
+            <div className="display-buttons">
+              <h3 className="ir">display 선택버튼 들</h3>
+              <div className="button-wrapper">
+                <button type="button" className="list-button">
+                  <span className="ir">리스트 형 버튼</span>
+                </button>
+                <button type="button" className="gallery-button">
+                  <span className="ir">갤러리 형 버튼</span>
+                </button>
+              </div>
+            </div>
+            <PostList />
+          </DisplaySection>
         </Posts>
       </Main>
       <TabMenu />
@@ -199,6 +214,7 @@ const Products = styled.section`
   justify-content: center;
   border-top: 0.5px solid #dbdbdb;
   border-bottom: 0.5px solid #dbdbdb;
+  margin-bottom: 10px;
 
   .user-product-tile {
     font-weight: 600;
@@ -215,6 +231,9 @@ const Products = styled.section`
 `;
 
 const Posts = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .ir {
     position: absolute;
     left: -10000px;
@@ -222,6 +241,56 @@ const Posts = styled.section`
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+`;
+
+const DisplaySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .ir {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .display-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 0.5px solid #dbdbdb;
+    border-bottom: 0.5px solid #dbdbdb;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 390px;
+    width: 100%;
+    height: 44px;
+    padding-right: 16px;
+  }
+
+  button {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+  }
+
+  .list-button {
+    background: url("/assets/icon/icon-post-list-on.png");
+    margin-right: 16px;
+  }
+
+  .gallery-button {
+    background: url("/assets/icon/icon-post-album-off.png");
   }
 `;
 

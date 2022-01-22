@@ -47,6 +47,7 @@ const TabNabContainer = styled.nav`
   box-sizing: border-box;
   padding: 14px 33px;
   border-top: 1px solid rgba(121, 121, 121, 0.3);
+  background: #fff;
 `;
 
 const TabNavList = styled.ul`
@@ -78,3 +79,8 @@ const Nav = styled.li`
 `;
 
 export default TabMenu;
+
+// TODO: click change color nav menu
+// <img src="/assets/icon/icon-home-fill@brown.png" alt="home icon" />;
+// <img src="/assets/icon/icon-message-circle-fill@brown.png" alt="chat icon">
+// <img src="/assets/icon/icon-profile.png" alt="profile icon">
