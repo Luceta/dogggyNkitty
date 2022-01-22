@@ -12,7 +12,6 @@ function TopSearchNav({ onSearch, keywords, setKeywords }) {
       <div>
         <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
       </div>
-
       <SearchInput placeholder="계정 검색" onKeyUp={handleSearch} onChange={setKeywords} />
     </HeaderBox>
   );

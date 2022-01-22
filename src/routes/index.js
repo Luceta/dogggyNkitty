@@ -5,7 +5,7 @@ import Signup from "./Signup/Container";
 import Main from "../components/Main/Main";
 import Profile from "./Profile/Profile";
 import Product from "./Product/Container";
-import Splash from "../components/Splash/Splash";
+import EditProfile from "./EditProfile/Container";
 import Search from "./Search/Search";
 
 function Routes({ isLogin }) {
@@ -15,8 +15,8 @@ function Routes({ isLogin }) {
       <Route path="/join" component={Signup} />
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
-      <Route path="/splash" component={Splash} />
       <Route path="/search" component={Search} />
+      <Route path="/account/edit" component={EditProfile} />
       <Redirect to="/" />
     </Switch>
   );

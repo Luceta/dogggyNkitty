@@ -8,8 +8,11 @@ export const getTokenFail = () => {
   return { type: GET_TOKEN_FAIL };
 };
 
-export const updateUserInfo = () => {
-  return { type: UPDATE_USER };
+export const updateUserInfo = (user) => {
+  return {
+    type: UPDATE_USER,
+    payload: user,
+  };
 };
 
 export const logout = () => {
