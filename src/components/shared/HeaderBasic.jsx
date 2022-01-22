@@ -1,14 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import HeaderBox from "./HeaderBox";
 
-function HeaderBasic(props) {
-  const { children } = props;
+function HeaderBasic({ children }) {
   return (
     <HeaderBox>
       <LeftNav>
-        <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
-        <h2>{children}</h2>
+        <Link to="/">
+          <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
+          <h2>{children}</h2>
+        </Link>
       </LeftNav>
 
       <div>
