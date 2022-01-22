@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom.m
 import Home from "./Home/Container";
 import Signup from "./Signup/Container";
 import Main from "../components/Main/Main";
-import Profile from "./Profile/Profile";
+import Profile from "./Profile/Container";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";
 import Search from "./Search/Search";

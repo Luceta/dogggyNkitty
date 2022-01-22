@@ -3,15 +3,11 @@ import styled from "styled-components";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
+import ProductList from "../ProductList/ProductList";
 
-function Profile({ history }) {
-  const handleProductClick = () => {
-    history.push("/product");
-  };
-
-  const handleProfileClick = () => {
-    history.push("/account/edit");
-  };
+function Profile({ handleProfileClick, handleProductClick }) {
+  // TODO: product list 받아오기  from api
+  const testList = [];
 
   return (
     <>
@@ -37,7 +33,7 @@ function Profile({ history }) {
                 <strong className="followings-count">0</strong>
                 <span className="followings-txt">followings</span>
               </a>
-              <div className="user-info-btn-boxs">
+              <div className="user-info-btns">
                 <button type="button" onClick={handleProfileClick}>
                   프로필 수정
                 </button>
@@ -51,63 +47,7 @@ function Profile({ history }) {
         <Products>
           <div>
             <h2 className="user-product-tile">판매중인 상품</h2>
-            <ul className="product-list">
-              <li className="user-product">
-                <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
-                  <figcaption className="product-info">
-                    <strong className="product-name">야너두?</strong>
-                    <strong className="product-price">1,234 원</strong>
-                  </figcaption>
-                </figure>
-              </li>
-
-              <li className="user-product">
-                <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
-                  <figcaption className="product-info">
-                    <strong className="product-name">야너두?</strong>
-                    <strong className="product-price">1,234 원</strong>
-                  </figcaption>
-                </figure>
-              </li>
-
-              <li className="user-product">
-                <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
-                  <figcaption className="product-info">
-                    <strong className="product-name">야너두?</strong>
-                    <strong className="product-price">1,234 원</strong>
-                  </figcaption>
-                </figure>
-              </li>
-
-              <li className="user-product">
-                <figure>
-                  <img
-                    src="http://146.56.183.55:5050/1642440242659.jpeg"
-                    alt="user-product"
-                    className="product-image"
-                  />
-                  <figcaption className="product-info">
-                    <strong className="product-name">야너두?</strong>
-                    <strong className="product-price">1,234 원</strong>
-                  </figcaption>
-                </figure>
-              </li>
-            </ul>
+            <ProductList products={testList} />
           </div>
         </Products>
         <Posts>
@@ -236,7 +176,7 @@ const UserInfo = styled.header`
     color: #767676;
   }
 
-  .user-info-btn-boxs {
+  .user-info-btns {
     button {
       background-color: #fff;
       border: 1px solid #dbdbdb;
@@ -274,44 +214,6 @@ const Products = styled.section`
     padding: 20px 0 20px 16px;
     max-width: 390px;
     width: 100%;
-  }
-
-  .product-list {
-    display: flex;
-    gap: 10px;
-    overflow-x: scroll;
-  }
-
-  .user-product {
-    cursor: pointer;
-  }
-
-  .product {
-    min-width: 140px;
-  }
-
-  .product-image {
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .product-info {
-    padding: 6px 2px 0;
-  }
-
-  .product-name {
-    display: block;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    margin-bottom: 4px;
-  }
-
-  .product-price {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
   }
 `;
 
