@@ -5,10 +5,10 @@ export default function ProductListEntry({ product }) {
   return (
     <Product>
       <figure className="product">
-        <img src="http://146.56.183.55:5050/1642843641728.gif" alt="user-product" className="product-image" />
+        <img src={product.itemImage} alt="user-product" className="product-image" />
         <figcaption className="product-info">
-          <strong className="product-name">야너두?</strong>
-          <strong className="product-price">1,234 원</strong>
+          <strong className="product-name">{product.itemName}</strong>
+          <strong className="product-price">{product.price}</strong>
         </figcaption>
       </figure>
     </Product>
