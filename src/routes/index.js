@@ -1,11 +1,12 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import Home from "./Home/Home";
+import Home from "./Home/Container";
 import Signup from "./Signup/Container";
 import Main from "../components/Main/Main";
 import Profile from "./Profile/Profile";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";
+import Search from "./Search/Search";
 
 function Routes({ isLogin }) {
   return (
@@ -15,6 +16,8 @@ function Routes({ isLogin }) {
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
       <Route path="/account/edit" component={EditProfile} />
+      <Route path="/search" component={Search} />
+
       <Redirect to="/" />
     </Switch>
   );

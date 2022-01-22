@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import HeaderBox from "./HeaderBox";
 
@@ -8,6 +9,9 @@ function TopMainNav({ children }) {
       <TopSearchTitle>{children}</TopSearchTitle>
       <SearchBox>
         <img src="/assets/icon/icon-search.png" alt="search logo" />
+        <Link to="/search">
+          <img src="/assets/icon/icon-search.png" alt="search logo" />
+        </Link>
       </SearchBox>
     </HeaderBox>
   );

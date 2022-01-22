@@ -6,6 +6,8 @@ const UPLOAD_IMAGE = `${BASE_URL}/image/uploadfile`;
 const UPLOAD_PRODUCT = `${BASE_URL}/product`;
 const ACCOUNT_VALID = `${BASE_URL}/user/accountnamevalid`;
 
+
+
 export const signupAPI = (email, password, username, accountname, intro, image) => {
   const data = {
     user: {
@@ -125,4 +127,19 @@ export const checkAccountAPI = (accountname) => {
   };
 
   return fetch(ACCOUNT_VALID, options);
+
+export const searchUserAPI = (value) => {
+  const SEARCH_USER = `${BASE_URL}/user/searchuser/?keyword=${value}`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(SEARCH_USER, options);
+
 };
