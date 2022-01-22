@@ -141,3 +141,32 @@ export const searchUserAPI = (value) => {
 
   return fetch(SEARCH_USER, options);
 };
+
+export const getUserProducts = (accountname) => {
+  const USER_PRODUCTS = `${BASE_URL}/product/${accountname}`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(USER_PRODUCTS, options);
+};
+
+export const getUserProfile = (accountname) => {
+  const USER_PROFILE = `${BASE_URL}/profile/${accountname}`;
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(USER_PROFILE, options);
+};

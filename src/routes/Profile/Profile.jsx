@@ -5,10 +5,7 @@ import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 
-function Profile({ handleProfileClick, handleProductClick }) {
-  // TODO: product list 받아오기  from api
-  const testList = [];
-
+function Profile({ handleProfileClick, handleProductClick, products, user, profile }) {
   return (
     <>
       <StatusBar />
@@ -22,15 +19,15 @@ function Profile({ handleProfileClick, handleProductClick }) {
           <div className="user-info-wrapper">
             <div className="user-info">
               <img src="http://146.56.183.55:5050/Ellipse.png" alt="user-avatar" className="avatar" />
-              <strong className="username">청귤좋아</strong>
-              <strong className="user-id">유저 아이디</strong>
-              <p className="user-intro">유저 소개란</p>
+              <strong className="username">{user.username}</strong>
+              <strong className="user-id">{user.accountname}</strong>
+              <p className="user-intro">{user.intro}</p>
               <a href="/#followers" className="follower">
-                <strong className="followers-count">1</strong>
+                <strong className="followers-count">{profile.followerCount}</strong>
                 <span className="followers-txt">followers</span>
               </a>
               <a href="/#following" className="following">
-                <strong className="followings-count">0</strong>
+                <strong className="followings-count">{profile.followingCount}</strong>
                 <span className="followings-txt">followings</span>
               </a>
               <div className="user-info-btns">
@@ -47,7 +44,7 @@ function Profile({ handleProfileClick, handleProductClick }) {
         <Products>
           <div>
             <h2 className="user-product-tile">판매중인 상품</h2>
-            <ProductList products={testList} />
+            {products && <ProductList products={products} />}
           </div>
         </Products>
         <Posts>

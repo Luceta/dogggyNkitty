@@ -12,7 +12,7 @@ export default function ProductList({ products }) {
   return (
     <Container>
       {products.map((product) => {
-        return <ProductListEntry product={product} />;
+        return <ProductListEntry key={product.id} product={product} />;
       })}
     </Container>
   );
