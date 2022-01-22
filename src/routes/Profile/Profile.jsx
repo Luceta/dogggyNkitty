@@ -9,6 +9,10 @@ function Profile({ history }) {
     history.push("/product");
   };
 
+  const handleProfileClick = () => {
+    history.push("/account/edit");
+  };
+
   return (
     <>
       <StatusBar />
@@ -34,7 +38,9 @@ function Profile({ history }) {
                 <span className="followings-txt">followings</span>
               </a>
               <div className="user-info-btn-boxs">
-                <button type="button">프로필 수정</button>
+                <button type="button" onClick={handleProfileClick}>
+                  프로필 수정
+                </button>
                 <button type="button" className="product-add-button" onClick={handleProductClick}>
                   상품 등록
                 </button>

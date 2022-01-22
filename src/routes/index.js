@@ -5,6 +5,7 @@ import Signup from "./Signup/Container";
 import Main from "../components/Main/Main";
 import Profile from "./Profile/Profile";
 import Product from "./Product/Container";
+import EditProfile from "./EditProfile/Container";
 
 function Routes({ isLogin }) {
   return (
@@ -13,6 +14,7 @@ function Routes({ isLogin }) {
       <Route path="/join" component={Signup} />
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
+      <Route path="/account/edit" component={EditProfile} />
       <Redirect to="/" />
     </Switch>
   );

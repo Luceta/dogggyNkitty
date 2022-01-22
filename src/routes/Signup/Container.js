@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Signup from "./Signup";
 import useInput from "../../components/hooks/useInput";
-import { checkEmailAPI, imageUploadAPI, signupAPI } from "../../api/api";
+import { checkEmailAPI, signupAPI } from "../../api/api";
+import imageUpload from "../../utils/upload";
 
 export default function SignupContainer({ history }) {
   const email = useInput("");
@@ -19,14 +20,6 @@ export default function SignupContainer({ history }) {
   const [buttonActive, setButtonActive] = useState(true);
   const [avatar, setAvatar] = useState("");
   const [validCount, setValidCount] = useState(0);
-
-  const imageUpload = async (files) => {
-    const response = await imageUploadAPI(files);
-    const result = await response.json();
-    const imageSrc = result.filename;
-
-    return imageSrc;
-  };
 
   const handleChangeFile = async (ev) => {
     const { files } = ev.target;
@@ -99,7 +92,6 @@ export default function SignupContainer({ history }) {
   };
 
   const handleJoin = async (ev) => {
-    // TODO : API 통신 보내고 회원가입 시키고 리덕스 상태변경패치 하여 메인 페이지 이동
     ev.preventDefault();
     const response = await signupAPI(
       email.value,

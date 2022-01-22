@@ -12,8 +12,19 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_USER: {
-      return { ...state };
+      const { email, accountname, image, intro, username, _id: id } = action.payload;
+
+      return {
+        ...state,
+        id,
+        email,
+        image,
+        username,
+        accountname,
+        intro,
+      };
     }
+
     case SET_CURRENT_USER: {
       const { email, accountname, image, intro, username, _id: id } = action.payload;
 
