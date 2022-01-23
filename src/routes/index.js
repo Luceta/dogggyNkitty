@@ -6,7 +6,7 @@ import Main from "../components/Main/Main";
 import Profile from "./Profile/Container";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";
-import Search from "./Search/Search";
+import Search from "./Search/Contianer";
 
 function Routes({ isLogin }) {
   return (
@@ -17,6 +17,7 @@ function Routes({ isLogin }) {
       <Route path="/product" component={Product} />
       <Route path="/search" component={Search} />
       <Route path="/account/edit" component={EditProfile} />
+      <Route path="/chat/list" component={Search} />
       <Redirect to="/" />
     </Switch>
   );
