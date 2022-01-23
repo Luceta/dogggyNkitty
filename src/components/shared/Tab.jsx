@@ -1,37 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function TabMenu() {
+  const [pathname, setPathname] = useState("/");
+  const location = useLocation();
+
+  useEffect(() => {
+    setPathname(location.pathname);
+  }, [location]);
+
   return (
     <TabNabContainer>
       <TabNavList>
         <Nav>
-          <Link to="/" className="nav_link">
-            <img src="/assets/icon/icon-home.png" alt="home icon" />
+          <NavLink to="/" className="nav_link home">
+            {pathname === "/" ? (
+              <img src="/assets/icon/icon-home-fill@brown.png" alt="home icon" />
+            ) : (
+              <img src="/assets/icon/icon-home.png" alt="home icon" />
+            )}
             <span>홈</span>
-          </Link>
+          </NavLink>
         </Nav>
 
         <Nav>
-          <Link to="/chat" className="nav_link">
-            <img src="/assets/icon/icon-message-circle.svg" alt="chat icon" />
+          <NavLink to="/chat/list" className="nav_link chat">
+            {pathname === "/chat/list" ? (
+              <img src="/assets/icon/icon-message-circle-fill@brown.png" alt="chat icon" />
+            ) : (
+              <img src="/assets/icon/icon-message-circle.svg" alt="chat icon" />
+            )}
+
             <span>채팅</span>
-          </Link>
+          </NavLink>
         </Nav>
 
         <Nav>
-          <Link to="/edit" className="nav_link">
+          <NavLink to="/post" className="nav_link post">
             <img src="/assets/icon/icon-edit.png" alt="upload icon" />
             <span>게시물 작성</span>
-          </Link>
+          </NavLink>
         </Nav>
 
         <Nav>
-          <Link to="/profile" className="nav_link">
-            <img src="/assets/icon/icon-user.png" alt="profile icon" />
-            <span>프로필</span>
-          </Link>
+          <NavLink to="/profile" className="nav_link profile">
+            {pathname === "/profile" ? (
+              <img src="/assets/icon/icon-profile.png" alt="profile icon" />
+            ) : (
+              <img src="/assets/icon/icon-user.png" alt="profile icon" />
+            )}
+            <span className="profile-nav">프로필</span>
+          </NavLink>
         </Nav>
       </TabNavList>
     </TabNabContainer>
@@ -79,8 +99,3 @@ const Nav = styled.li`
 `;
 
 export default TabMenu;
-
-// TODO: click change color nav menu
-// <img src="/assets/icon/icon-home-fill@brown.png" alt="home icon" />;
-// <img src="/assets/icon/icon-message-circle-fill@brown.png" alt="chat icon">
-// <img src="/assets/icon/icon-profile.png" alt="profile icon">
