@@ -37,7 +37,7 @@ function TabMenu() {
         </Nav>
 
         <Nav>
-          <NavLink to="/post" className="nav_link post">
+          <NavLink to="/post/upload" className="nav_link post">
             <img src="/assets/icon/icon-edit.png" alt="upload icon" />
             <span>게시물 작성</span>
           </NavLink>

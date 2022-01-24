@@ -5,6 +5,7 @@ const EMAIL_VALID = `${BASE_URL}/user/emailvalid`;
 const UPLOAD_IMAGE = `${BASE_URL}/image/uploadfile`;
 const UPLOAD_PRODUCT = `${BASE_URL}/product`;
 const ACCOUNT_VALID = `${BASE_URL}/user/accountnamevalid`;
+const UPLOAD_POST = `${BASE_URL}/post`;
 
 export const signupAPI = (email, password, username, accountname, intro, image) => {
   const data = {
@@ -169,4 +170,22 @@ export const getUserProfile = (accountname) => {
   };
 
   return fetch(USER_PROFILE, options);
+};
+
+export const uploadPostImageAPI = (post) => {
+  const data = {
+    post,
+  };
+
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  return fetch(UPLOAD_POST, options);
 };

@@ -1,16 +1,22 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import HeaderBox from "./HeaderBox";
 import Button from "./Button";
 
-function TopUploadNav({ handleClick, setButton, handleButton }) {
+function TopUploadNav({ handleClick, setButton, children }) {
+  const history = useHistory();
+  const backToPage = () => {
+    history.goBack();
+  };
+
   return (
     <HeaderBox>
-      <BackToButton type="button" onClick={handleButton}>
+      <BackToButton type="button" onClick={backToPage}>
         <img src="/assets/icon/icon-arrow-left.png" alt="back to home icon" />
       </BackToButton>
       <Button size="md" color="main" onClick={handleClick} disabled={setButton}>
-        저장
+        {children}
       </Button>
     </HeaderBox>
   );

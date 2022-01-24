@@ -10,7 +10,6 @@ function EditProfile({
   accountname,
   intro,
   avatar,
-  handleButton,
   handleClick,
   usernameWarning,
   accoutnameWarning,
@@ -22,7 +21,9 @@ function EditProfile({
   return (
     <>
       <StatusBar />
-      <TopUploadNav handleClick={handleClick} handleButton={handleButton} setButton={onButtonActive} />
+      <TopUploadNav handleClick={handleClick} setButton={onButtonActive}>
+        저장
+      </TopUploadNav>
       <Main>
         <EditProfileWrapper>
           <EditProfileForm>

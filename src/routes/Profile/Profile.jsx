@@ -6,7 +6,7 @@ import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 import PostList from "../../components/PostList/PostList";
 
-function Profile({ handleProfileClick, handleProductClick, products, user, profile }) {
+export default function Profile({ handleProfileClick, handleProductClick, products, user, profile }) {
   return (
     <>
       <StatusBar />
@@ -24,11 +24,11 @@ function Profile({ handleProfileClick, handleProductClick, products, user, profi
               <strong className="user-id">{user.accountname}</strong>
               <p className="user-intro">{user.intro}</p>
               <a href="/#followers" className="follower">
-                <strong className="followers-count">{profile.followerCount}</strong>
+                {profile && <strong className="followers-count">{profile.followerCount}</strong>}
                 <span className="followers-txt">followers</span>
               </a>
               <a href="/#following" className="following">
-                <strong className="followings-count">{profile.followingCount}</strong>
+                {profile && <strong className="followings-count">{profile.followingCount}</strong>}
                 <span className="followings-txt">followings</span>
               </a>
               <div className="user-info-btns">
@@ -293,5 +293,3 @@ const DisplaySection = styled.div`
     background: url("/assets/icon/icon-post-album-off.png");
   }
 `;
-
-export default Profile;
