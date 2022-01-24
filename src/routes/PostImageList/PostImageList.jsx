@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import PostImageCard from "../PostImageCard/PostImageCard";
 
 function PostImageList({ images }) {
@@ -8,7 +9,7 @@ function PostImageList({ images }) {
       <h4 className="ir">추가된 사진</h4>
       <ul className="image-list">
         {images.map((image) => {
-          return <PostImageCard image={image} />;
+          return <PostImageCard key={uuidv4()} image={image} />;
         })}
       </ul>
     </PostImageWrapper>
