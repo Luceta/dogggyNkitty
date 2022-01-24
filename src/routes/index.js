@@ -6,7 +6,8 @@ import Main from "../components/Main/Main";
 import Profile from "./Profile/Container";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";
-import Search from "./Search/Contianer";
+import Search from "./Search/Container";
+import PostUpload from "./PostUpload/PostUpload";
 
 function Routes({ isLogin }) {
   return (
@@ -18,6 +19,7 @@ function Routes({ isLogin }) {
       <Route path="/search" component={Search} />
       <Route path="/account/edit" component={EditProfile} />
       <Route path="/chat/list" component={Search} />
+      <Route path="/post/upload" component={PostUpload} />
       <Redirect to="/" />
     </Switch>
   );

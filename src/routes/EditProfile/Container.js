@@ -28,10 +28,6 @@ function EditProfileContainer({ user, updateUser, history }) {
     displayUserInfo();
   }, []);
 
-  const backToProfile = () => {
-    history.push("/profile");
-  };
-
   const handleClick = async () => {
     const userInfo = {
       id: user.id,
@@ -112,7 +108,6 @@ function EditProfileContainer({ user, updateUser, history }) {
       usernameWarning={usernameWarning}
       accoutnameWarning={accoutnameWarning}
       accountValid={accountValid}
-      handleButton={backToProfile}
       handleClick={handleClick}
       handleUsernameBlur={usernameValidation}
       handleAccountnameBlur={accountnameValidation}
