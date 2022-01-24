@@ -1,88 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import styled from "styled-components";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import TopUploadNav from "../../components/shared/TopUploadNav";
 import PostImageList from "../PostImageList/PostImageList";
-import imageUpload from "../../utils/upload";
-import useInput from "../../components/hooks/useInput";
-import { uploadPostImageAPI } from "../../api/api";
 
-function PostUpload({ history, avatar }) {
-  const [images, SetImages] = useState([]);
-  const [uploadImg, setUploadImg] = useState("");
-  const [imageCount, setImageCount] = useState(0);
-  const [button, setButton] = useState(true);
-  const postText = useInput("");
-
-  const isButtonActive = () => {
-    if (postText.value.length > 0) {
-      setButton(false);
-    }
-  };
-
-  const handleImage = async (ev) => {
-    const { files } = ev.target;
-    const image = await imageUpload(files);
-    const imageURL = `http://146.56.183.55:5050/${image}`;
-
-    setUploadImg(imageURL);
-    setImageCount(imageCount + 1);
-  };
-
-  const imageCountValidation = () => {
-    let status = false;
-    if (imageCount > 3) {
-      status = true;
-    }
-    return status;
-  };
-
-  const postUpload = async (ev) => {
-    ev.preventDefault();
-
-    const data = {
-      content: postText.value,
-      image: `${images}`,
-    };
-    try {
-      const response = await uploadPostImageAPI(data);
-      await response.json();
-      history.goBack();
-    } catch (error) {
-      console.log(error, "error");
-    }
-  };
-
-  useEffect(() => {
-    const UploadImages = async () => {
-      if (uploadImg === "") {
-        return;
-      }
-      if (!imageCountValidation()) {
-        SetImages([...images, uploadImg]);
-      }
-    };
-
-    UploadImages();
-  }, [imageCount]);
-
-  useEffect(() => {
-    const maxCount = imageCountValidation();
-
-    if (maxCount) {
-      alert("이미지는 3개 까지만 가능합니다.");
-    }
-  }, [imageCount]);
-
-  useEffect(() => {
-    isButtonActive();
-  }, [postText]);
-
+function PostUpload({ avatar, button, onClick, onTextChange, images, imageCount, handleImage }) {
   return (
     <>
       <StatusBar />
-      <TopUploadNav handleClick={postUpload} setButton={button}>
+      <TopUploadNav handleClick={onClick} setButton={button}>
         업로드
       </TopUploadNav>
       <Container>
@@ -94,7 +20,7 @@ function PostUpload({ history, avatar }) {
               name="text"
               placeholder="텍스트 입력하기"
               className="post-text"
-              onChange={(ev) => postText.onChange(ev)}
+              onChange={(ev) => onTextChange.onChange(ev)}
             />
             <label htmlFor="imageUpload" className="img-upload">
               <input type="file" accept="image/*" id="imageUpload" className="ir" onChange={handleImage} />
@@ -167,10 +93,4 @@ const Container = styled.main`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    avatar: state.user.image,
-  };
-};
-
-export default connect(mapStateToProps, null)(PostUpload);
+export default PostUpload;

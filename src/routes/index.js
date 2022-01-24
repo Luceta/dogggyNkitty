@@ -7,7 +7,7 @@ import Profile from "./Profile/Container";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";
 import Search from "./Search/Container";
-import PostUpload from "./PostUpload/PostUpload";
+import PostUpload from "./PostUpload/Container";
 
 function Routes({ isLogin }) {
   return (
