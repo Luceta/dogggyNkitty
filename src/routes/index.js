@@ -26,14 +26,14 @@ function AfterLogin() {
     <Switch>
       <Route exact path="/" component={Main} />
       <Route path="/join" component={Signup} />
-      <Route exact path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
       <Route path="/search" component={Search} />
       <Route path="/account/edit" component={EditProfile} />
       <Route path="/chat/list" component={Search} />
       <Route path="/post/upload" component={PostUpload} />
+      <Route exact path="/profile" component={Profile} />
       <Route path="/profile/:accountname" component={ProfileDetail} />
-      <Route path="/test" component={NotFound} />
+      <Route path="*" component={NotFound} />
       <Redirect to="/" />
     </Switch>
   );
