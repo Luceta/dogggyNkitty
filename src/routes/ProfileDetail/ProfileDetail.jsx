@@ -1,27 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 import PostList from "../../components/PostList/PostList";
-import Modal from "../../components/Modal/Modal";
-import Alert from "../../components/shared/Alert";
 
-export default function Profile({
-  handleProfileClick,
-  handleProductClick,
-  handleClick,
-  modalOpen,
-  alertOpen,
-  modalClose,
-  products,
-  profile,
-  posts,
-  handleLogoutModal,
-  logout,
-  closeAlert,
-}) {
+function ProfileDetail({ products, profile, posts, handleClick }) {
   return (
     <>
       <StatusBar />
@@ -47,12 +32,16 @@ export default function Profile({
                   <strong className="followings-count">{profile.followingCount}</strong>
                   <span className="followings-txt">followings</span>
                 </a>
-                <div className="user-info-btns">
-                  <button type="button" onClick={handleProfileClick}>
-                    프로필 수정
+
+                <div className="button-container">
+                  <button type="button" className="message">
+                    <span className="ir">메세지 버튼</span>
                   </button>
-                  <button type="button" className="product-add-button" onClick={handleProductClick}>
-                    상품 등록
+                  <button type="button" className="follow-btn">
+                    언 팔로우
+                  </button>
+                  <button type="button" className="share-btn">
+                    <span className="ir">공유하기 버튼</span>
                   </button>
                 </div>
               </div>
@@ -83,11 +72,6 @@ export default function Profile({
           </DisplaySection>
         </Posts>
       </Main>
-      <Modal open={modalOpen} close={modalClose} logout={handleLogoutModal} />
-      {alertOpen && (
-        <Alert actionContent="로그아웃" title="로그아웃 하시겠어요?" cancel={closeAlert} handleAction={logout} />
-      )}
-
       <TabMenu />
     </>
   );
@@ -211,24 +195,44 @@ const UserInfo = styled.header`
     color: #767676;
   }
 
-  .user-info-btns {
-    button {
-      background-color: #fff;
-      border: 1px solid #dbdbdb;
-      border-radius: 30px;
-      width: 120px;
-      height: 34px;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 18px;
-      color: #767676;
-    }
+  .message {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #dbdbdb;
+    border-radius: 50%;
+    background: url("/assets/icon/icon-message-circle.png") no-repeat center / 20px 20px;
+  }
 
-    .product-add-button {
-      width: 100px;
-      height: 34px;
-      margin-left: 12px;
-    }
+  .follow-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 34px;
+    border-radius: 30px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    color: #767676;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .share-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #dbdbdb;
+    border-radius: 50%;
+    background: url("/assets/icon/icon-share.png") no-repeat center / 20px 20px;
+  }
+
+  .ir {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 `;
 
@@ -316,3 +320,5 @@ const DisplaySection = styled.div`
     background: url("/assets/icon/icon-post-album-off.png");
   }
 `;
+
+export default ProfileDetail;

@@ -10,7 +10,6 @@ function ProfileContainer({ history, user, logout }) {
   const [posts, setPosts] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
-  const currentLocation = history.location.pathname;
 
   const showUserModal = () => {
     setModalOpen(true);
@@ -61,13 +60,8 @@ function ProfileContainer({ history, user, logout }) {
   };
 
   useEffect(() => {
-    if (currentLocation === "/profile") {
-      getUserData(user.accountname);
-    } else {
-      const accountname = currentLocation.split("/")[2];
-      getUserData(accountname);
-    }
-  }, [currentLocation]);
+    getUserData(user.accountname);
+  }, []);
 
   return (
     <Profile
