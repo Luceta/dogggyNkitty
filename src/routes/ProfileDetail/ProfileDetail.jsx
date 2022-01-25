@@ -195,6 +195,11 @@ const UserInfo = styled.header`
     color: #767676;
   }
 
+  .button-container {
+    display: flex;
+    gap: 10px;
+  }
+
   .message {
     width: 34px;
     height: 34px;

@@ -9,6 +9,7 @@ import EditProfile from "./EditProfile/Container";
 import Search from "./Search/Container";
 import PostUpload from "./PostUpload/Container";
 import ProfileDetail from "./ProfileDetail/Container";
+import NotFound from "../components/NotFound/NotFound";
 
 function BeforeLogin() {
   return (
@@ -32,6 +33,7 @@ function AfterLogin() {
       <Route path="/chat/list" component={Search} />
       <Route path="/post/upload" component={PostUpload} />
       <Route path="/profile/:accountname" component={ProfileDetail} />
+      <Route path="/test" component={NotFound} />
       <Redirect to="/" />
     </Switch>
   );
