@@ -5,14 +5,29 @@ import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 import PostList from "../../components/PostList/PostList";
+import Modal from "../../components/Modal/Modal";
+import Alert from "../../components/shared/Alert";
 
-export default function Profile({ handleProfileClick, handleProductClick, products, profile, posts }) {
+export default function Profile({
+  handleProfileClick,
+  handleProductClick,
+  handleClick,
+  modalOpen,
+  alertOpen,
+  modalClose,
+  products,
+  profile,
+  posts,
+  handleLogoutModal,
+  logout,
+  closeAlert,
+}) {
   return (
     <>
       <StatusBar />
       <Header>
         <h1 className="ir">유저 id의 페이지</h1>
-        <HeaderBasic />
+        <HeaderBasic handleClick={handleClick} />
       </Header>
 
       <Main>
@@ -68,6 +83,11 @@ export default function Profile({ handleProfileClick, handleProductClick, produc
           </DisplaySection>
         </Posts>
       </Main>
+      <Modal open={modalOpen} close={modalClose} logout={handleLogoutModal} />
+      {alertOpen && (
+        <Alert actionContent="로그아웃" title="로그아웃 하시겠어요?" cancel={closeAlert} handleAction={logout} />
+      )}
+
       <TabMenu />
     </>
   );

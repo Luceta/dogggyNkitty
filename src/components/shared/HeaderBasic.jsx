@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import HeaderBox from "./HeaderBox";
 
-function HeaderBasic({ children }) {
+function HeaderBasic({ children, handleClick }) {
   return (
     <HeaderBox>
       <LeftNav>
@@ -13,9 +13,9 @@ function HeaderBasic({ children }) {
         </Link>
       </LeftNav>
 
-      <div>
-        <img src="/assets/icon/icon-more-vertical.png" alt="back to home icon" />
-      </div>
+      <button type="button" onClick={handleClick}>
+        <img src="/assets/icon/icon-more-vertical.png" alt="show options" />
+      </button>
     </HeaderBox>
   );
 }

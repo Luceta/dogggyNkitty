@@ -1,29 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 
-function Alert({ title, actionContent }) {
+function Alert({ title, actionContent, cancel, handleAction }) {
   return (
-    <ModalWrapper>
-      <ModalTitle>{title}</ModalTitle>
-      <div className="action-box">
-        <button type="button" className="cancel">
-          취소
-        </button>
-        <button type="button" className="delete">
-          {actionContent}
-        </button>
-      </div>
-    </ModalWrapper>
+    <Container>
+      <ModalWrapper>
+        <h2 className="ir">경고 메세지</h2>
+        <ModalTitle>{title}</ModalTitle>
+        <div className="action-box">
+          <button type="button" className="cancel" onClick={cancel}>
+            취소
+          </button>
+          <button type="button" className="delete" onClick={handleAction}>
+            {actionContent}
+          </button>
+        </div>
+      </ModalWrapper>
+    </Container>
   );
 }
 
 export default Alert;
+
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+`;
 
 const ModalWrapper = styled.div`
   width: 252px;
   border-radius: 10px;
   border: 0.5px solid #dbdbdb;
   overflow: hidden;
+
+  .ir {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
 
   .action-box {
     display: flex;
@@ -57,4 +81,5 @@ const ModalTitle = styled.h3`
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
+  background: #fff;
 `;

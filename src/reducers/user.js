@@ -1,4 +1,4 @@
-import { UPDATE_USER, SET_CURRENT_USER } from "./types";
+import { UPDATE_USER, SET_CURRENT_USER, RESET_CURRENT_USER } from "./types";
 
 const initialState = {
   id: "",
@@ -36,6 +36,18 @@ const userReducer = (state = initialState, action) => {
         username,
         accountname,
         intro,
+      };
+    }
+
+    case RESET_CURRENT_USER: {
+      return {
+        ...state,
+        id: "",
+        email: "",
+        image: "",
+        username: "",
+        accountname: "",
+        intro: "",
       };
     }
     default:

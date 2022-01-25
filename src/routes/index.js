@@ -9,10 +9,20 @@ import EditProfile from "./EditProfile/Container";
 import Search from "./Search/Container";
 import PostUpload from "./PostUpload/Container";
 
-function Routes({ isLogin }) {
+function BeforeLogin() {
   return (
     <Switch>
-      {isLogin ? <Route exact path="/" component={Main} /> : <Route exact path="/" component={Home} />}
+      <Route exact path="/" component={Home} />
+      <Route path="*" component={Home} />
+      <Redirect to="/" />
+    </Switch>
+  );
+}
+
+function AfterLogin() {
+  return (
+    <Switch>
+      <Route exact path="/" component={Main} />
       <Route path="/join" component={Signup} />
       <Route path="/profile" component={Profile} />
       <Route path="/product" component={Product} />
@@ -26,4 +36,6 @@ function Routes({ isLogin }) {
   );
 }
 
-export default Routes;
+export default function Routes({ isLogin }) {
+  return isLogin ? <AfterLogin /> : <BeforeLogin />;
+}

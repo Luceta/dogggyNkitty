@@ -2,12 +2,46 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getUserProducts, getUserProfile, getUserPost } from "../../api/api";
+import { logoutUser } from "../../thunks";
 
-function ProfileContainer({ history, user }) {
+function ProfileContainer({ history, user, logout }) {
   const [products, setProducts] = useState(null);
   const [profile, setProfile] = useState("");
   const [posts, setPosts] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(false);
   const currentLocation = history.location.pathname;
+
+  const showUserModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeUserModal = (ev) => {
+    if (ev.target.id === "logout-alert") {
+      setModalOpen(true);
+    } else {
+      setModalOpen(false);
+    }
+  };
+
+  const handleLogoutModal = () => {
+    setAlertOpen(true);
+  };
+
+  const closeAlert = () => {
+    setAlertOpen(false);
+    setModalOpen(false);
+  };
+
+  const handleLogoutAlert = async () => {
+    try {
+      localStorage.removeItem("access_token");
+      logout();
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleProductClick = () => {
     history.push("/product");
@@ -39,9 +73,16 @@ function ProfileContainer({ history, user }) {
     <Profile
       handleProfileClick={handleProfileClick}
       handleProductClick={handleProductClick}
+      handleClick={showUserModal}
+      modalClose={closeUserModal}
+      modalOpen={modalOpen}
+      alertOpen={alertOpen}
       products={products}
       profile={profile}
       posts={posts}
+      handleLogoutModal={handleLogoutModal}
+      closeAlert={closeAlert}
+      logout={handleLogoutAlert}
     />
   );
 }
@@ -52,4 +93,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ProfileContainer);
+const mapDispatchToPros = (dispatch) => {
+  return {
+    logout: () => dispatch(logoutUser()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToPros)(ProfileContainer);

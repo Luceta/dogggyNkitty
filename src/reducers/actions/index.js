@@ -1,4 +1,4 @@
-import { GET_TOKEN_OK, GET_TOKEN_FAIL, UPDATE_USER, LOGOUT, SET_CURRENT_USER } from "../types";
+import { GET_TOKEN_OK, GET_TOKEN_FAIL, UPDATE_USER, LOGOUT, SET_CURRENT_USER, RESET_CURRENT_USER } from "../types";
 
 export const getTokenOK = () => {
   return { type: GET_TOKEN_OK };
@@ -24,4 +24,8 @@ export const setCurrentUser = (user) => {
     type: SET_CURRENT_USER,
     payload: user,
   };
+};
+
+export const resetUser = () => {
+  return { type: RESET_CURRENT_USER };
 };

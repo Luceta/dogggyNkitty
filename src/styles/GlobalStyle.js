@@ -23,6 +23,13 @@ const GlobalStyle = createGlobalStyle`
     color: #767676;
   }
 
+  button{
+    border: none;
+    background: inherit;
+    outline: none;
+  }
+
+
 `;
 
 export default GlobalStyle;

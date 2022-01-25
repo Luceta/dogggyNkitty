@@ -1,4 +1,4 @@
-import { getTokenOK, getTokenFail, setCurrentUser, updateUserInfo } from "../reducers/actions";
+import { getTokenOK, getTokenFail, setCurrentUser, updateUserInfo, logout, resetUser } from "../reducers/actions";
 import { loginAPI, uploadProfileAPI } from "../api/api";
 
 export const getToken = (email, password) => async (dispatch) => {
@@ -34,5 +34,14 @@ export const updateProfile = (user) => async (dispatch) => {
     dispatch(updateUserInfo(user));
   } catch (error) {
     console.log(error, "error");
+  }
+};
+
+export const logoutUser = () => async (dispatch) => {
+  try {
+    dispatch(logout());
+    dispatch(resetUser());
+  } catch (error) {
+    console.log(error);
   }
 };
