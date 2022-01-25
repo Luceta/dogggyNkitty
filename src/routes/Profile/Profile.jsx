@@ -6,7 +6,7 @@ import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 import PostList from "../../components/PostList/PostList";
 
-export default function Profile({ handleProfileClick, handleProductClick, products, user, profile }) {
+export default function Profile({ handleProfileClick, handleProductClick, products, profile, posts }) {
   return (
     <>
       <StatusBar />
@@ -18,28 +18,30 @@ export default function Profile({ handleProfileClick, handleProductClick, produc
       <Main>
         <UserInfo>
           <div className="user-info-wrapper">
-            <div className="user-info">
-              <img src="http://146.56.183.55:5050/Ellipse.png" alt="user-avatar" className="avatar" />
-              <strong className="username">{user.username}</strong>
-              <strong className="user-id">{user.accountname}</strong>
-              <p className="user-intro">{user.intro}</p>
-              <a href="/#followers" className="follower">
-                {profile && <strong className="followers-count">{profile.followerCount}</strong>}
-                <span className="followers-txt">followers</span>
-              </a>
-              <a href="/#following" className="following">
-                {profile && <strong className="followings-count">{profile.followingCount}</strong>}
-                <span className="followings-txt">followings</span>
-              </a>
-              <div className="user-info-btns">
-                <button type="button" onClick={handleProfileClick}>
-                  프로필 수정
-                </button>
-                <button type="button" className="product-add-button" onClick={handleProductClick}>
-                  상품 등록
-                </button>
+            {profile && (
+              <div className="user-info">
+                <img src={profile.image} alt="user-avatar" className="avatar" />
+                <strong className="username">{profile.username}</strong>
+                <strong className="user-id">{profile.accountname}</strong>
+                <p className="user-intro">{profile.intro}</p>
+                <a href="/#followers" className="follower">
+                  <strong className="followers-count">{profile.followerCount}</strong>
+                  <span className="followers-txt">followers</span>
+                </a>
+                <a href="/#following" className="following">
+                  <strong className="followings-count">{profile.followingCount}</strong>
+                  <span className="followings-txt">followings</span>
+                </a>
+                <div className="user-info-btns">
+                  <button type="button" onClick={handleProfileClick}>
+                    프로필 수정
+                  </button>
+                  <button type="button" className="product-add-button" onClick={handleProductClick}>
+                    상품 등록
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </UserInfo>
         <Products>
@@ -62,7 +64,7 @@ export default function Profile({ handleProfileClick, handleProductClick, produc
                 </button>
               </div>
             </div>
-            <PostList />
+            {posts && <PostList posts={posts} />}
           </DisplaySection>
         </Posts>
       </Main>

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProducts, getUserProfile } from "../../api/api";
+import { getUserProducts, getUserProfile, getUserPost } from "../../api/api";
 
 function ProfileContainer({ history, user }) {
   const [products, setProducts] = useState(null);
   const [profile, setProfile] = useState("");
+  const [posts, setPosts] = useState(null);
+  const currentLocation = history.location.pathname;
+
   const handleProductClick = () => {
     history.push("/product");
   };
@@ -14,24 +17,31 @@ function ProfileContainer({ history, user }) {
     history.push("/account/edit");
   };
 
-  useEffect(() => {
-    const getUserData = async () => {
-      const userProducts = await (await getUserProducts(user.accountname)).json();
-      setProducts(userProducts.product);
-      const userProfile = await (await getUserProfile(user.accountname)).json();
-      setProfile(userProfile.profile);
-    };
+  const getUserData = async (accountname) => {
+    const userProducts = await (await getUserProducts(accountname)).json();
+    const userProfile = await (await getUserProfile(accountname)).json();
+    const userPosts = await (await getUserPost(accountname)).json();
+    setProducts(userProducts.product);
+    setProfile(userProfile.profile);
+    setPosts(userPosts.post);
+  };
 
-    getUserData();
-  }, []);
+  useEffect(() => {
+    if (currentLocation === "/profile") {
+      getUserData(user.accountname);
+    } else {
+      const accountname = currentLocation.split("/")[2];
+      getUserData(accountname);
+    }
+  }, [currentLocation]);
 
   return (
     <Profile
       handleProfileClick={handleProfileClick}
       handleProductClick={handleProductClick}
       products={products}
-      user={user}
       profile={profile}
+      posts={posts}
     />
   );
 }

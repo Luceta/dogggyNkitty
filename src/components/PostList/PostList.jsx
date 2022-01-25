@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import PostListEntry from "../PostListEntry/PostListEntry";
 
-function PostList() {
+function PostList({ posts }) {
   return (
     <Container>
-      <PostListEntry />
+      {posts.map((post) => {
+        return <PostListEntry key={post.id} post={post} />;
+      })}
     </Container>
   );
 }

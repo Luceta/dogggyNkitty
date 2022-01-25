@@ -189,3 +189,17 @@ export const uploadPostImageAPI = (post) => {
 
   return fetch(UPLOAD_POST, options);
 };
+
+export const getUserPost = (accountname) => {
+  const GET_POSTS = `${BASE_URL}/post/${accountname}/userpost`;
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(GET_POSTS, options);
+};

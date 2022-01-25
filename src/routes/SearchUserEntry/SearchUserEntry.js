@@ -9,15 +9,22 @@ export default function SearchUserEntry({ user, keywords }) {
     return styCopy.replace(keyword, (match) => `<span class=${hStyle}>${match}</span>`);
   };
 
+  const { _id: id } = user;
+
   return (
     <UserCard>
-      <Link to="/#userinfolink" className="user-info-link">
+      <StyledLink
+        key={id}
+        to={{
+          pathname: `/profile/${user.accountname}`,
+        }}
+      >
         <img src={user.image} alt="user-avatar" className="user-avatar" />
         <div className="user-info">
           <strong className="user-name" dangerouslySetInnerHTML={{ __html: highLight(user.username, keywords) }} />
           <strong className="user-account-name">{user.accountname}</strong>
         </div>
-      </Link>
+      </StyledLink>
     </UserCard>
   );
 }
@@ -70,4 +77,11 @@ const UserCard = styled.li`
   .key-word {
     color: #c98128;
   }
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;

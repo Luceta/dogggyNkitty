@@ -20,6 +20,7 @@ function Routes({ isLogin }) {
       <Route path="/account/edit" component={EditProfile} />
       <Route path="/chat/list" component={Search} />
       <Route path="/post/upload" component={PostUpload} />
+      <Route path="/profile/:accountname" component={Profile} />
       <Redirect to="/" />
     </Switch>
   );

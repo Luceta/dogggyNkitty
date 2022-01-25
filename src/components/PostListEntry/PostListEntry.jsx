@@ -1,8 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import ImageCard from "../ImageCard/ImageCard";
 
-function PostListEntry() {
+function PostListEntry({ post }) {
+  const { accountname, username } = post.author;
+  const postDate = new Date(post.createdAt).toLocaleDateString();
+  const postImage = post.image;
+
   return (
     <Wrapper>
       <h3 className="ir">유저 포스트</h3>
@@ -14,39 +19,27 @@ function PostListEntry() {
           className="post-author-profile-img"
         />
         <div className="post-auth-info">
-          <strong className="post-username">유저네임 란입니다.</strong>
-          <strong className="post-account-name">어카운트 계정 란입니다.</strong>
+          <strong className="post-username">{username}</strong>
+          <strong className="post-account-name">{accountname}</strong>
         </div>
       </PostInfo>
 
       <PostContainer>
         <h4 className="ir">유저 게시글 내용</h4>
-        <p className="post-text">게시글 내용을 적으면 됩니다.</p>
-        <div className="post-img-wrapper">
-          <ul className="post-img-list">
-            <li>
-              <img src="http://146.56.183.55:5050/1642863804845.jpg" alt="포스트 이미지" className="post-img" />
-            </li>
-            <li>
-              <img src="http://146.56.183.55:5050/1642863804845.jpg" alt="포스트 이미지" className="post-img" />
-            </li>
-            <li>
-              <img src="http://146.56.183.55:5050/1642863804845.jpg" alt="포스트 이미지" className="post-img" />
-            </li>
-          </ul>
-        </div>
+        <p className="post-text">{post.content}</p>
+        <div className="post-img-wrapper">{postImage ? <ImageCard postImage={postImage} /> : ""}</div>
 
         <div className="like-comment-wrapper">
           <button type="button" className="like">
             <span className="ir">좋아요 숫자</span>
-            <span className="like-count">3</span>
+            <span className="like-count">{post.heartCount}</span>
           </button>
           <Link to="/#" className="comment">
             <span className="ir">댓글 남기기</span>
-            <span className="comment-count">3</span>
+            <span className="comment-count">{post.commentCount}</span>
           </Link>
         </div>
-        <strong className="post-date">2022년 1월 23일/ 현재 날짜 적어주기</strong>
+        <strong className="post-date">{postDate}</strong>
         <button type="button" className="post-controller">
           <span className="ir">더보기 버튼</span>
         </button>
@@ -124,26 +117,6 @@ const PostContainer = styled.section`
     font-size: 14px;
     line-height: 18px;
     margin-bottom: 16px;
-  }
-
-  .post-img-list {
-    display: flex;
-  }
-
-  .post-img-list li {
-    min-width: 304px;
-    width: 100%;
-    max-height: 228px;
-    min-height: 228px;
-    border-radius: 10px;
-    border: 0.5px solid #dbdbdb;
-    overflow: hidden;
-  }
-
-  .post-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   .like-comment-wrapper {
