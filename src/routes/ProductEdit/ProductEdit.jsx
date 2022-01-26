@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Product from "./Product";
+import { useParams } from "react-router-dom";
+import Product from "../Product/Product";
 import useInput from "../../components/hooks/useInput";
-import imageUpload from "../../utils/upload";
-import { uploadProduct } from "../../api/api";
-import { numberWithoutComma, numberWithComma } from "../../utils/number";
+import { getProductDetailAPI, updateProductDetailAPI } from "../../api/api";
+import { numberWithComma, numberWithoutComma } from "../../utils/number";
 
-export default function ProductContainer({ history }) {
+function ProductEdit({ history }) {
+  const { productId } = useParams();
   const productName = useInput("");
   const price = useInput("");
   const storeLink = useInput("");
-  const [button, setButton] = useState(true);
   const [productImg, setProductImg] = useState(null);
+  const [button, setButton] = useState(true);
 
-  const handleClick = async () => {
-    const priceWithoutComma = numberWithoutComma(price.value);
-    const data = {
-      itemName: productName.value,
-      price: priceWithoutComma,
-      link: storeLink.value,
-      itemImage: productImg,
-    };
+  const getProductInfo = async (product) => {
+    const result = await (await getProductDetailAPI(product)).json();
 
-    try {
-      const response = await uploadProduct(data);
-      await response.json();
-      history.push("/profile");
-    } catch (error) {
-      console.log(error);
-    }
+    productName.setValue(result.product.itemName);
+    price.setValue(result.product.price.toString());
+    storeLink.setValue(result.product.link);
+    setProductImg(result.product.itemImage);
   };
 
   const handleBacktoLink = () => {
@@ -83,34 +75,52 @@ export default function ProductContainer({ history }) {
     const productTest = productNameValidation();
     const priceTest = price.value.split("").length;
 
-    if (priceTest > 0 && urlTest && productTest && productImg !== null) {
+    if (priceTest > 0 && urlTest && productTest) {
       setButton(false);
     }
   };
 
-  const handleImage = async (ev) => {
-    const { files } = ev.target;
-    const image = await imageUpload(files);
-    const imageURL = `http://146.56.183.55:5050/${image}`;
-    setProductImg(imageURL);
+  const updateProduct = async () => {
+    const priceWithoutComma = numberWithoutComma(price.value);
+    const data = {
+      product: {
+        itemName: productName.value,
+        price: priceWithoutComma,
+        link: storeLink.value,
+        itemImage: productImg,
+      },
+    };
+    try {
+      const result = await (await updateProductDetailAPI(productId, data)).json();
+      history.push("/profile");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     isButtonAcitve();
   }, [urlValidation, productNameValidation, productImg, price]);
 
+  useEffect(() => {
+    if (productId) {
+      getProductInfo(productId);
+    }
+  }, [productId]);
+
   return (
     <Product
-      handleProductImage={handleImage}
-      productImg={productImg}
       product={productName}
+      productImg={productImg}
       price={price}
       storeLink={storeLink}
-      handleClick={handleClick}
       setButton={button}
       handleBacktoLink={handleBacktoLink}
       handlePriceKeyPress={handlePriceKeyPress}
       handlePriceBlur={handlePriceBlur}
+      handleClick={updateProduct}
     />
   );
 }
+
+export default ProductEdit;

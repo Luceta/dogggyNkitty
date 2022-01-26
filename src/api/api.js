@@ -203,3 +203,47 @@ export const getUserPost = (accountname) => {
 
   return fetch(GET_POSTS, options);
 };
+
+export const deleteProductAPI = (productId) => {
+  const DELETE_PRODUCT = `${BASE_URL}/product/${productId}`;
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(DELETE_PRODUCT, options);
+};
+
+export const getProductDetailAPI = (productId) => {
+  const GET_PRODUCT_DETAIL = `${BASE_URL}/product/detail/${productId}`;
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(GET_PRODUCT_DETAIL, options);
+};
+
+export const updateProductDetailAPI = (productID, data) => {
+  const UPDATE_PRODUCT = `${BASE_URL}/product/${productID}`;
+
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  return fetch(UPDATE_PRODUCT, options);
+};

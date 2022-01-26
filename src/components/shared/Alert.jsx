@@ -8,7 +8,7 @@ function Alert({ title, actionContent, cancel, handleAction }) {
         <h2 className="ir">경고 메세지</h2>
         <ModalTitle>{title}</ModalTitle>
         <div className="action-box">
-          <button type="button" className="cancel" onClick={cancel}>
+          <button type="button" className="cancel" onClick={(ev) => cancel(ev)}>
             취소
           </button>
           <button type="button" className="delete" onClick={handleAction}>

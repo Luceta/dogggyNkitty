@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function ProductListEntry({ product }) {
+export default function ProductListEntry({ product, handleCLick }) {
   return (
-    <Product>
+    <Product onClick={(ev) => handleCLick(ev)}>
       <figure className="product">
-        <img src={product.itemImage} alt="user-product" className="product-image" />
+        <img src={product.itemImage} alt="user-product" className="product-image" data-id={product.id} />
         <figcaption className="product-info">
           <strong className="product-name">{product.itemName}</strong>
           <strong className="product-price">{product.price}</strong>

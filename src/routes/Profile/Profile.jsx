@@ -13,7 +13,7 @@ export default function Profile({
   handleProductClick,
   handleClick,
   modalOpen,
-  alertOpen,
+  logoutAlert,
   modalClose,
   products,
   profile,
@@ -21,6 +21,13 @@ export default function Profile({
   handleLogoutModal,
   logout,
   closeAlert,
+  productAlert,
+  userModal,
+  productModal,
+  openProductModal,
+  deleteProduct,
+  editProduct,
+  handleDeleteProduct,
 }) {
   return (
     <>
@@ -62,7 +69,7 @@ export default function Profile({
         <Products>
           <div>
             <h2 className="user-product-tile">판매중인 상품</h2>
-            {products && <ProductList products={products} />}
+            {products && <ProductList products={products} openProductModal={openProductModal} />}
           </div>
         </Products>
         <Posts>
@@ -83,9 +90,21 @@ export default function Profile({
           </DisplaySection>
         </Posts>
       </Main>
-      <Modal open={modalOpen} close={modalClose} logout={handleLogoutModal} />
-      {alertOpen && (
+
+      <Modal
+        open={modalOpen}
+        close={modalClose}
+        logout={handleLogoutModal}
+        productModal={productModal}
+        userModal={userModal}
+        handleDelete={deleteProduct}
+        handleEdit={editProduct}
+      />
+      {logoutAlert && (
         <Alert actionContent="로그아웃" title="로그아웃 하시겠어요?" cancel={closeAlert} handleAction={logout} />
+      )}
+      {productAlert && (
+        <Alert actionContent="삭제" title="삭제 하시겠어요?" cancel={closeAlert} handleAction={handleDeleteProduct} />
       )}
 
       <TabMenu />

@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
 import HeaderBasic from "../../components/shared/HeaderBasic";
 import ProductList from "../ProductList/ProductList";
 import PostList from "../../components/PostList/PostList";
+import Modal from "../../components/Modal/Modal";
+import Alert from "../../components/shared/Alert";
 
-function ProfileDetail({ products, profile, posts, handleClick }) {
+function ProfileDetail({
+  products,
+  profile,
+  posts,
+  handleClick,
+  modalOpen,
+  alertOpen,
+  modalClose,
+  logout,
+  closeAlert,
+  handleLogoutModal,
+}) {
   return (
     <>
       <StatusBar />
@@ -72,6 +85,10 @@ function ProfileDetail({ products, profile, posts, handleClick }) {
           </DisplaySection>
         </Posts>
       </Main>
+      <Modal open={modalOpen} close={modalClose} logout={handleLogoutModal} />
+      {alertOpen && (
+        <Alert actionContent="로그아웃" title="로그아웃 하시겠어요?" cancel={closeAlert} handleAction={logout} />
+      )}
       <TabMenu />
     </>
   );

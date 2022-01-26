@@ -18,7 +18,9 @@ function Product({
 }) {
   return (
     <>
-      <TopUploadNav handleClick={handleClick} setButton={setButton} handleButton={handleBacktoLink} />
+      <TopUploadNav handleClick={handleClick} setButton={setButton} handleButton={handleBacktoLink}>
+        저장
+      </TopUploadNav>
       <ProductRegister>
         <h1 className="ir">상품등록 페이지</h1>
         <RegisterForm>

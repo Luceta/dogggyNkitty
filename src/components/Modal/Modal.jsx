@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Modal({ open, close, logout }) {
+function Modal({ open, close, logout, productModal, userModal, handleDelete, handleEdit }) {
   return (
     <Container onClick={close}>
       <div className={open ? "openModal modal" : "modal"}>
-        {open && (
+        {userModal && (
           <Options>
             <li>
               <StyledLink to="/profile">설정 및 개인 정보</StyledLink>
@@ -15,6 +15,25 @@ function Modal({ open, close, logout }) {
               <button type="button" onClick={logout} id="logout-alert">
                 로그아웃
               </button>
+            </li>
+          </Options>
+        )}
+        {productModal && (
+          <Options>
+            <li>
+              <button type="button" onClick={(ev) => handleDelete(ev)} id="delete">
+                삭제
+              </button>
+            </li>
+
+            <li>
+              <button type="button" onClick={(ev) => handleEdit(ev)} id="edit">
+                수정
+              </button>
+            </li>
+
+            <li>
+              <StyledLink to="/productlink">웹 사이트에서 상품 보기</StyledLink>
             </li>
           </Options>
         )}
@@ -86,6 +105,7 @@ const Options = styled.ul`
       font-weight: 400;
       font-size: 14px;
       line-height: 18px;
+      padding: 0;
     }
   }
 

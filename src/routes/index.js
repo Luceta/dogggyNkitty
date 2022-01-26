@@ -10,6 +10,7 @@ import Search from "./Search/Container";
 import PostUpload from "./PostUpload/Container";
 import ProfileDetail from "./ProfileDetail/Container";
 import NotFound from "../components/NotFound/NotFound";
+import ProductEdit from "./ProductEdit/ProductEdit";
 
 function BeforeLogin() {
   return (
@@ -26,13 +27,14 @@ function AfterLogin() {
     <Switch>
       <Route exact path="/" component={Main} />
       <Route path="/join" component={Signup} />
-      <Route path="/product" component={Product} />
       <Route path="/search" component={Search} />
       <Route path="/account/edit" component={EditProfile} />
       <Route path="/chat/list" component={Search} />
       <Route path="/post/upload" component={PostUpload} />
       <Route exact path="/profile" component={Profile} />
       <Route path="/profile/:accountname" component={ProfileDetail} />
+      <Route exact path="/product" component={Product} />
+      <Route path="/product/:productId/edit" component={ProductEdit} />
       <Route path="*" component={NotFound} />
       <Redirect to="/" />
     </Switch>

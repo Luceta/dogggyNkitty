@@ -8,11 +8,11 @@ const Container = styled.ul`
   overflow-x: scroll;
 `;
 
-export default function ProductList({ products }) {
+export default function ProductList({ products, openProductModal }) {
   return (
     <Container>
       {products.map((product) => {
-        return <ProductListEntry key={product.id} product={product} />;
+        return <ProductListEntry handleCLick={openProductModal} key={product.id} product={product} />;
       })}
     </Container>
   );
