@@ -91,7 +91,7 @@ function ProductEdit({ history }) {
       },
     };
     try {
-      const result = await (await updateProductDetailAPI(productId, data)).json();
+      await (await updateProductDetailAPI(productId, data)).json();
       history.push("/profile");
     } catch (error) {
       console.log(error);

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
-import { getUserProducts, getUserProfile, getUserPost, deleteProductAPI } from "../../api/api";
+import { getUserProducts, getUserProfile, getUserPost, deleteProductAPI, getProductDetailAPI } from "../../api/api";
 import { logoutUser } from "../../thunks";
 
 function ProfileContainer({ history, user, logout }) {
   const [products, setProducts] = useState(null);
   const [profile, setProfile] = useState("");
   const [posts, setPosts] = useState(null);
+  const [storeLink, setStoreLink] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [logoutAlert, setLogoutAlert] = useState(false);
   const [userModal, setUserModal] = useState(false);
@@ -92,6 +93,11 @@ function ProfileContainer({ history, user, logout }) {
     history.push("/account/edit");
   };
 
+  const handleStoreLink = async () => {
+    const result = await (await getProductDetailAPI(imageId)).json();
+    setStoreLink(result.product.link);
+  };
+
   const getUserData = async (accountname) => {
     const userProducts = await (await getUserProducts(accountname)).json();
     const userProfile = await (await getUserProfile(accountname)).json();
@@ -103,7 +109,11 @@ function ProfileContainer({ history, user, logout }) {
 
   useEffect(() => {
     getUserData(user.accountname);
-  }, []);
+  }, [products]);
+
+  useEffect(() => {
+    if (modalOpen) handleStoreLink();
+  }, [modalOpen]);
 
   return (
     <Profile
@@ -119,6 +129,7 @@ function ProfileContainer({ history, user, logout }) {
       products={products}
       profile={profile}
       posts={posts}
+      storeLink={storeLink}
       openProductModal={openProductModal}
       handleLogoutModal={handleLogoutModal}
       closeAlert={closeAlert}
@@ -126,6 +137,7 @@ function ProfileContainer({ history, user, logout }) {
       handleDeleteProduct={handleDeleteAlert}
       deleteProduct={handleDelete}
       editProduct={handleEdit}
+      handleStoreLink={handleStoreLink}
     />
   );
 }

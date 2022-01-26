@@ -18,6 +18,7 @@ export default function Profile({
   products,
   profile,
   posts,
+  storeLink,
   handleLogoutModal,
   logout,
   closeAlert,
@@ -99,6 +100,7 @@ export default function Profile({
         userModal={userModal}
         handleDelete={deleteProduct}
         handleEdit={editProduct}
+        storeLink={storeLink}
       />
       {logoutAlert && (
         <Alert actionContent="로그아웃" title="로그아웃 하시겠어요?" cancel={closeAlert} handleAction={logout} />
