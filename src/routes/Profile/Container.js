@@ -16,6 +16,15 @@ function ProfileContainer({ history, user, logout }) {
   const [productAlert, setProductAlert] = useState(false);
   const [imageId, setImageId] = useState("");
 
+  const getUserData = async (accountname) => {
+    const userProducts = await (await getUserProducts(accountname)).json();
+    const userProfile = await (await getUserProfile(accountname)).json();
+    const userPosts = await (await getUserPost(accountname)).json();
+    setProducts(userProducts.product);
+    setProfile(userProfile.profile);
+    setPosts(userPosts.post);
+  };
+
   // user Modal menu open
   const showUserModal = () => {
     setModalOpen(true);
@@ -75,6 +84,7 @@ function ProfileContainer({ history, user, logout }) {
     } catch (error) {
       console.log(error);
     }
+    getUserData(user.accountname);
   };
 
   // 모달 수정 버튼 눌렀을 시 처리
@@ -98,18 +108,9 @@ function ProfileContainer({ history, user, logout }) {
     setStoreLink(result.product.link);
   };
 
-  const getUserData = async (accountname) => {
-    const userProducts = await (await getUserProducts(accountname)).json();
-    const userProfile = await (await getUserProfile(accountname)).json();
-    const userPosts = await (await getUserPost(accountname)).json();
-    setProducts(userProducts.product);
-    setProfile(userProfile.profile);
-    setPosts(userPosts.post);
-  };
-
   useEffect(() => {
     getUserData(user.accountname);
-  }, [products]);
+  }, []);
 
   useEffect(() => {
     if (modalOpen) handleStoreLink();
