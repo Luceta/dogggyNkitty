@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import ProfileDetail from "./ProfileDetail";
-import { getUserProducts, getUserProfile, getUserPost } from "../../api/api";
+import { getUserProducts, getUserProfile, getUserPost, followAPI } from "../../api/api";
 import { logoutUser } from "../../thunks";
 
 function ProfileDetailContainer({ history, logout }) {
@@ -12,6 +12,7 @@ function ProfileDetailContainer({ history, logout }) {
   const [posts, setPosts] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [follow, setFollow] = useState(false);
 
   const showUserModal = () => {
     setModalOpen(true);
@@ -63,6 +64,20 @@ function ProfileDetailContainer({ history, logout }) {
     }
   };
 
+  // 팔로우
+  const handleFollow = async () => {
+    try {
+      const result = await (await followAPI(accountname)).json();
+      setFollow(!follow);
+
+      if (result.status === 404) {
+        throw Error("account name is unvalid");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUserData(accountname);
   }, [accountname]);
@@ -76,9 +91,11 @@ function ProfileDetailContainer({ history, logout }) {
       alertOpen={alertOpen}
       closeAlert={closeAlert}
       handleClick={showUserModal}
+      handleFollow={handleFollow}
       modalClose={closeUserModal}
       handleLogoutModal={handleLogoutModal}
       logout={handleLogoutAlert}
+      follow={follow}
     />
   );
 }

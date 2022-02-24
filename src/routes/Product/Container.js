@@ -97,7 +97,7 @@ export default function ProductContainer({ history }) {
 
   useEffect(() => {
     isButtonAcitve();
-  }, [urlValidation, productNameValidation, productImg, price]);
+  }, [urlValidation, productName, productImg, price]);
 
   return (
     <Product

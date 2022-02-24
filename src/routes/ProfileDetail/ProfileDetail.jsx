@@ -13,12 +13,14 @@ function ProfileDetail({
   profile,
   posts,
   handleClick,
+  handleFollow,
   modalOpen,
   alertOpen,
   modalClose,
   logout,
   closeAlert,
   handleLogoutModal,
+  follow,
 }) {
   return (
     <>
@@ -50,9 +52,16 @@ function ProfileDetail({
                   <button type="button" className="message">
                     <span className="ir">메세지 버튼</span>
                   </button>
-                  <button type="button" className="follow-btn">
-                    언 팔로우
-                  </button>
+                  {follow ? (
+                    <button type="button" className="follow-btn active-button" onClick={handleFollow}>
+                      언팔로우
+                    </button>
+                  ) : (
+                    <button type="button" className="follow-btn" onClick={handleFollow}>
+                      팔로우
+                    </button>
+                  )}
+
                   <button type="button" className="share-btn">
                     <span className="ir">공유하기 버튼</span>
                   </button>
@@ -232,12 +241,17 @@ const UserInfo = styled.header`
     width: 120px;
     height: 34px;
     border-radius: 30px;
-    background-color: #fff;
-    border: 1px solid #dbdbdb;
-    color: #767676;
+    background-color: #937456;
+    color: #fff;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
+  }
+
+  .follow-btn.active-button {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    color: #767676;
   }
 
   .share-btn {

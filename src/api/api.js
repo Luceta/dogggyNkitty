@@ -247,3 +247,18 @@ export const updateProductDetailAPI = (productID, data) => {
 
   return fetch(UPDATE_PRODUCT, options);
 };
+
+export const followAPI = (accountname) => {
+  const FOLLOW = `${BASE_URL}/profile/${accountname}/follow`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(FOLLOW, options);
+};

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { numberWithComma } from "../../utils/number";
 
 export default function ProductListEntry({ product, handleCLick }) {
   return (
@@ -8,7 +9,7 @@ export default function ProductListEntry({ product, handleCLick }) {
         <img src={product.itemImage} alt="user-product" className="product-image" data-id={product.id} />
         <figcaption className="product-info">
           <strong className="product-name">{product.itemName}</strong>
-          <strong className="product-price">{product.price}</strong>
+          <strong className="product-price">{numberWithComma(product.price)}</strong>
         </figcaption>
       </figure>
     </Product>
