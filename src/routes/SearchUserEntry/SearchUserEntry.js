@@ -1,12 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 export default function SearchUserEntry({ user, keywords }) {
   const highLight = (username, keyword) => {
     const hStyle = "key-word";
     const styCopy = username;
-    return styCopy.replace(keyword, (match) => `<span class=${hStyle}>${match}</span>`);
+
+    if (keyword !== "" && styCopy.includes(keyword)) {
+      const parts = styCopy.split(new RegExp(`(${keyword})`, "gi"));
+      return (
+        <>
+          {parts.map((part) =>
+            part.toLowerCase() === keyword.toLowerCase() ? (
+              <span className={hStyle} key={uuidv4()}>
+                {part}
+              </span>
+            ) : (
+              part
+            )
+          )}
+        </>
+      );
+    }
+    return styCopy;
   };
 
   const { _id: id } = user;
@@ -21,7 +39,7 @@ export default function SearchUserEntry({ user, keywords }) {
       >
         <img src={user.image} alt="user-avatar" className="user-avatar" />
         <div className="user-info">
-          <strong className="user-name" dangerouslySetInnerHTML={{ __html: highLight(user.username, keywords) }} />
+          <strong className="user-name">{highLight(user.username, keywords)}</strong>
           <strong className="user-account-name">{user.accountname}</strong>
         </div>
       </StyledLink>
