@@ -262,3 +262,17 @@ export const followAPI = (accountname) => {
 
   return fetch(FOLLOW, options);
 };
+
+export const getFollowingAPI = (accountname) => {
+  const FOLLOWING = `${BASE_URL}/profile/${accountname}/following`;
+  const key = localStorage.getItem("access_token");
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(FOLLOWING, options);
+};
