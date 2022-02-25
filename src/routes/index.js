@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import Home from "./Home/Container";
 import Signup from "./Signup/Container";
-import Main from "../components/Main/Main";
+import Main from "../components/Main/Container";
 import Profile from "./Profile/Container";
 import Product from "./Product/Container";
 import EditProfile from "./EditProfile/Container";

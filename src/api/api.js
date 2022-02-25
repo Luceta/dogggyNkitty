@@ -263,8 +263,8 @@ export const followAPI = (accountname) => {
   return fetch(FOLLOW, options);
 };
 
-export const getFollowingAPI = (accountname) => {
-  const FOLLOWING = `${BASE_URL}/profile/${accountname}/following`;
+export const getFollowingFeedAPI = (limit = 0, skip = 0) => {
+  const FOLLOWING_FEED = `${BASE_URL}/post/feed/?/limit=${limit}&skip=${skip}`;
   const key = localStorage.getItem("access_token");
   const options = {
     method: "GET",
@@ -274,5 +274,5 @@ export const getFollowingAPI = (accountname) => {
     },
   };
 
-  return fetch(FOLLOWING, options);
+  return fetch(FOLLOWING_FEED, options);
 };
