@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import StatusBar from "../Statusbar/Statusbar";
-import TabMenu from "../shared/Tab";
-import TopMainNav from "../shared/TopMainNav";
-import FollowingPost from "../FollowingPost/FollowingPost";
+import StatusBar from "../../components/Statusbar/Statusbar";
+import TabMenu from "../../components/shared/Tab";
+import TopMainNav from "../../components/shared/TopMainNav";
+import FollowingPost from "../../components/FollowingPost/FollowingPost";
 
 export default function Main({ following }) {
   return (
