@@ -11,7 +11,7 @@ import PostUpload from "./PostUpload/Container";
 import ProfileDetail from "./ProfileDetail/Container";
 import NotFound from "../components/NotFound/NotFound";
 import ProductEdit from "./ProductEdit/ProductEdit";
-import MySnsList from "./MySnsList/MySnsList";
+import MySnsList from "./MySnsList/Container";
 
 function BeforeLogin() {
   return (
