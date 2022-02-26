@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import StatusBar from "../../components/Statusbar/Statusbar";
 import TabMenu from "../../components/shared/Tab";
@@ -47,14 +48,17 @@ export default function Profile({
                 <strong className="username">{profile.username}</strong>
                 <strong className="user-id">{profile.accountname}</strong>
                 <p className="user-intro">{profile.intro}</p>
-                <a href="/#followers" className="follower">
+
+                <FollowerLink to={`follow/${profile.accountname}/follower`}>
                   <strong className="followers-count">{profile.followerCount}</strong>
                   <span className="followers-txt">followers</span>
-                </a>
-                <a href="/#following" className="following">
+                </FollowerLink>
+
+                <FollowingLink to={`follow/${profile.accountname}/following`}>
                   <strong className="followings-count">{profile.followingCount}</strong>
                   <span className="followings-txt">followings</span>
-                </a>
+                </FollowingLink>
+
                 <div className="user-info-btns">
                   <button type="button" onClick={handleProfileClick}>
                     프로필 수정
@@ -113,6 +117,22 @@ export default function Profile({
     </>
   );
 }
+
+const FollowerLink = styled(Link)`
+  position: absolute;
+  left: 56px;
+  top: 65px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const FollowingLink = styled(Link)`
+  position: absolute;
+  top: 65px;
+  left: 287px;
+  text-align: center;
+  cursor: pointer;
+`;
 
 const Header = styled.header`
   .ir {

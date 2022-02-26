@@ -53,7 +53,7 @@ const UserCard = styled.li`
   align-items: center;
 
   .user-info-link {
-    // position:relative;
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;

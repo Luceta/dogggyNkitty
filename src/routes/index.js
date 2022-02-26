@@ -11,6 +11,7 @@ import PostUpload from "./PostUpload/Container";
 import ProfileDetail from "./ProfileDetail/Container";
 import NotFound from "../components/NotFound/NotFound";
 import ProductEdit from "./ProductEdit/ProductEdit";
+import MySnsList from "./MySnsList/MySnsList";
 
 function BeforeLogin() {
   return (
@@ -33,6 +34,8 @@ function AfterLogin() {
       <Route path="/post/upload" component={PostUpload} />
       <Route exact path="/profile" component={Profile} />
       <Route path="/profile/:accountname" component={ProfileDetail} />
+      <Route exact path="/follow/:accountname/following" component={MySnsList} />
+      <Route exact path="/follow/:accountname/follower" component={MySnsList} />
       <Route exact path="/product" component={Product} />
       <Route path="/product/:productId/edit" component={ProductEdit} />
       <Route path="*" component={NotFound} />

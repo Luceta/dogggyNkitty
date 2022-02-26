@@ -10,7 +10,6 @@ export default function MainContainer() {
     const getMyFollowings = async () => {
       try {
         const getFeeds = await (await getFollowingFeedAPI()).json();
-        console.log(getFeeds, "feed list");
         setFollowing(getFeeds.posts);
       } catch (error) {
         console.log(error);
