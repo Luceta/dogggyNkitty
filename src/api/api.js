@@ -276,3 +276,48 @@ export const getFollowingFeedAPI = (limit = 0, skip = 0) => {
 
   return fetch(FOLLOWING_FEED, options);
 };
+
+export const unFollowAPI = (accountname) => {
+  const UNFOLLOW = `${BASE_URL}/profile/${accountname}/unfollow`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(UNFOLLOW, options);
+};
+
+export const getMyFollowingListAPI = (accuontname, limit = 0, skip = 0) => {
+  const MyFollowings = `${BASE_URL}/profile/${accuontname}/following?limit=${limit}&skip=${skip}`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(MyFollowings, options);
+};
+
+export const getMyFollowerListAPI = (accuontname, limit = 0, skip = 0) => {
+  const MyFollowers = `${BASE_URL}/profile/${accuontname}/follower?limit=${limit}&skip=${skip}`;
+  const key = localStorage.getItem("access_token");
+
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(MyFollowers, options);
+};

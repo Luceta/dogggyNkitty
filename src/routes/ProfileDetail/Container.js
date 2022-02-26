@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import ProfileDetail from "./ProfileDetail";
-import { getUserProducts, getUserProfile, getUserPost, followAPI } from "../../api/api";
+import { getUserProducts, getUserProfile, getUserPost, followAPI, unFollowAPI } from "../../api/api";
 import { logoutUser } from "../../thunks";
 
 function ProfileDetailContainer({ history, logout }) {
@@ -64,23 +64,37 @@ function ProfileDetailContainer({ history, logout }) {
     }
   };
 
-  // 팔로우
-  const handleFollow = async () => {
-    try {
-      const result = await (await followAPI(accountname)).json();
-      setFollow(!follow);
+  const handleFollow = async (ev) => {
+    if (ev.target.innerText === "팔로우") {
+      try {
+        const result = await (await followAPI(accountname)).json();
+        setFollow(!follow);
 
-      if (result.status === 404) {
-        throw Error("account name is unvalid");
+        if (result.status === 404) {
+          throw Error("account name is unvalid");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        await (await unFollowAPI(accountname)).json();
+        setFollow(!follow);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   useEffect(() => {
     getUserData(accountname);
   }, [accountname]);
+
+  useEffect(() => {
+    if (profile) {
+      setFollow(profile.isfollow);
+    }
+  }, [profile]);
 
   return (
     <ProfileDetail

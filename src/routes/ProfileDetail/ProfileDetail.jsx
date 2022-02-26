@@ -53,11 +53,11 @@ function ProfileDetail({
                     <span className="ir">메세지 버튼</span>
                   </button>
                   {follow ? (
-                    <button type="button" className="follow-btn active-button" onClick={handleFollow}>
+                    <button type="button" className="follow-btn active-button" onClick={(ev) => handleFollow(ev)}>
                       언팔로우
                     </button>
                   ) : (
-                    <button type="button" className="follow-btn" onClick={handleFollow}>
+                    <button type="button" className="follow-btn" onClick={(ev) => handleFollow(ev)}>
                       팔로우
                     </button>
                   )}
