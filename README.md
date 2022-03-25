@@ -10,9 +10,13 @@
 
 ## 📃  Design & requirement 
 
-
 <a href="https://paullabworkspace.notion.site/SNS-cdd5ed88a24b499593d7081dc28a5cbc"> 프로젝트 설명 및 요구 사항</a>
+<a href="http://146.56.183.55:3000/"> 베타 링크</a>
 
+
+## 📃  시연 영상
+
+![디자인 변경 시연.gif](https://im4.ezgif.com/tmp/ezgif-4-7a27d3d637.gif)
 
 
 ## 💻Stacks
